@@ -9,7 +9,7 @@ import { Truck, AlertCircle } from 'lucide-react';
 
 const ROLES = [
   { value: 'operations_manager', label: 'Operations Manager' },
-  { value: 'warehouse_staff', label: 'Warehouse Staff' },
+  { value: 'warehouse_operator', label: 'Warehouse Staff' },
   { value: 'admin', label: 'Admin' },
 ];
 
@@ -19,7 +19,7 @@ export default function SignupPage() {
     name: '',
     email: '',
     password: '',
-    role: 'warehouse_staff',
+    role: 'warehouse_operator',
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [globalError, setGlobalError] = useState('');
