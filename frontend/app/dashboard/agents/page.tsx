@@ -306,9 +306,12 @@ export default function AgentsPage() {
                   <div>
                     <h4 className="text-xs font-bold text-[var(--color-text-muted)] uppercase tracking-wider mb-3">Current Assignment</h4>
                     {agentDetails.currentOrder ? (
-                      <div className="bg-amber-950/20 border border-amber-900/30 p-4 rounded-xl">
+                      <div 
+                        onClick={() => router.push(`/orders/${agentDetails.currentOrder._id}`)}
+                        className="bg-amber-950/20 border border-amber-900/30 p-4 rounded-xl cursor-pointer hover:bg-amber-900/20 hover:border-amber-500/50 transition-all group"
+                      >
                         <div className="flex justify-between items-start mb-2">
-                          <p className="text-sm font-bold text-white">{agentDetails.currentOrder.orderId}</p>
+                          <p className="text-sm font-bold text-white group-hover:text-indigo-400 transition-colors">{agentDetails.currentOrder.orderId}</p>
                           <span className="text-[10px] font-bold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded uppercase">In Transit</span>
                         </div>
                         <p className="text-xs text-[var(--color-text-secondary)]">To: {agentDetails.currentOrder.customer.name}</p>
@@ -329,9 +332,13 @@ export default function AgentsPage() {
                     ) : (
                       <div className="space-y-2">
                         {agentDetails.pastOrders.map((o: any) => (
-                          <div key={o._id} className="flex items-center justify-between bg-white/5 p-3 rounded-lg border border-white/5">
+                          <div 
+                            key={o._id} 
+                            onClick={() => router.push(`/orders/${o._id}`)}
+                            className="flex items-center justify-between bg-white/5 p-3 rounded-lg border border-white/5 cursor-pointer hover:bg-indigo-500/10 hover:border-indigo-500/30 transition-all group"
+                          >
                             <div>
-                              <p className="text-xs font-bold text-white">{o.orderId}</p>
+                              <p className="text-xs font-bold text-white group-hover:text-indigo-400 transition-colors">{o.orderId}</p>
                               <p className="text-[10px] text-[var(--color-text-muted)]">{o.deliveryAddress.city}</p>
                             </div>
                             <span className={`text-[10px] font-bold px-2 py-0.5 rounded uppercase ${o.status === 'Delivered' ? 'text-emerald-400 bg-emerald-400/10' : 'text-red-400 bg-red-400/10'}`}>
