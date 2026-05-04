@@ -106,11 +106,11 @@ export default function OrdersTable({ orders, loading }: OrdersTableProps) {
 
               {/* Agent */}
               <td className="px-4 py-4">
-                {order.deliveryAgent?.agentId ? (
+                {order.deliveryAgent?.name ? (
                   <div className="flex flex-col">
                     <p className="text-sm font-medium text-white">{order.deliveryAgent.name}</p>
                     <p className="text-[10px] text-[var(--color-text-muted)] font-mono">
-                      ID: {order.deliveryAgent.agentId}
+                      {order.deliveryAgent.phone || 'No phone'}
                     </p>
                   </div>
                 ) : (
