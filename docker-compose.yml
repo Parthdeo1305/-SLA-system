@@ -1,0 +1,54 @@
+version: '3.9'
+
+services:
+  mongo:
+    image: mongo:7
+    container_name: sts-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - sts-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: sts-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - MONGO_URI=mongodb://mongo:27017/shipment_tracker
+      - JWT_SECRET=change_this_to_a_production_secret_256bit
+      - JWT_EXPIRE=7d
+      - ALLOWED_ORIGINS=http://localhost:3000
+    depends_on:
+      - mongo
+    networks:
+      - sts-network
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: sts-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:5000/api
+    depends_on:
+      - backend
+    networks:
+      - sts-network
+    restart: unless-stopped
+
+volumes:
+  mongo_data:
+
+networks:
+  sts-network:
+    driver: bridge
