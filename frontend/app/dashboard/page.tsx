@@ -81,7 +81,10 @@ export default function DashboardPage() {
       <section className="space-y-6">
         <div className="flex flex-col xl:flex-row gap-6 items-stretch">
           {/* Main Delayed Ticker */}
-          <div className="bg-red-950/20 border border-red-900/30 rounded-2xl p-8 flex flex-col justify-center min-w-[280px] shadow-2xl shadow-red-950/20">
+          <div 
+            onClick={() => { setStatusFilter('all'); setDelayedOnly(true); }}
+            className={`cursor-pointer transition-all duration-200 border rounded-2xl p-8 flex flex-col justify-center min-w-[280px] shadow-2xl ${delayedOnly ? 'bg-red-950/40 border-red-500 ring-2 ring-red-500 ring-offset-4 ring-offset-[var(--color-bg)]' : 'bg-red-950/20 border-red-900/30 shadow-red-950/20 hover:scale-[1.02]'}`}
+          >
             <p className="text-red-400 text-xs font-bold uppercase tracking-[0.2em] mb-2">SLA Breached</p>
             <div className="flex items-baseline gap-3">
               <h2 className="text-7xl font-black text-white leading-none">
@@ -89,7 +92,7 @@ export default function DashboardPage() {
               </h2>
               <span className="text-red-400/50 text-sm font-medium">Orders</span>
             </div>
-            <p className="text-red-400/70 text-xs mt-6 font-medium italic">Requires immediate intervention</p>
+            <p className="text-red-400/70 text-xs mt-6 font-medium italic">Click to view delayed orders</p>
           </div>
 
           {/* Top 3 Critical Shipments */}
@@ -155,6 +158,8 @@ export default function DashboardPage() {
           icon={Package}
           color="indigo"
           loading={statsLoading}
+          onClick={() => { setStatusFilter('all'); setDelayedOnly(false); }}
+          isActive={statusFilter === 'all' && !delayedOnly}
         />
         <StatsCard
           title="Delivered"
@@ -162,6 +167,8 @@ export default function DashboardPage() {
           icon={CheckCircle2}
           color="emerald"
           loading={statsLoading}
+          onClick={() => { setStatusFilter('Delivered'); setDelayedOnly(false); }}
+          isActive={statusFilter === 'Delivered' && !delayedOnly}
         />
         <StatsCard
           title="In Transit"
@@ -169,6 +176,8 @@ export default function DashboardPage() {
           icon={Truck}
           color="amber"
           loading={statsLoading}
+          onClick={() => { setStatusFilter('In Transit'); setDelayedOnly(false); }}
+          isActive={statusFilter === 'In Transit' && !delayedOnly}
         />
       </section>
 
