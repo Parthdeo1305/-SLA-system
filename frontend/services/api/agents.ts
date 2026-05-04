@@ -32,4 +32,9 @@ export const agentsApi = {
     const { data } = await apiClient.patch<{ success: boolean; agent: Agent }>(`/agents/${id}/activate`);
     return data.agent;
   },
+
+  getDetails: async (id: string) => {
+    const { data } = await apiClient.get<{ success: boolean; agent: Agent; currentOrder: any; pastOrders: any[] }>(`/agents/${id}`);
+    return data;
+  },
 };

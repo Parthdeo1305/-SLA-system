@@ -1,4 +1,5 @@
 const Agent = require('../models/Agent');
+const { Order } = require('../models/Order');
 const { asyncHandler } = require('../middleware/errorHandler');
 
 // ─── GET /api/agents ──────────────────────────────────────────────────────────
@@ -59,9 +60,33 @@ const activateAgent = asyncHandler(async (req, res) => {
   res.status(200).json({ success: true, agent });
 });
 
+// ─── GET /api/agents/:id ──────────────────────────────────────────────────────
+const getAgentDetails = asyncHandler(async (req, res) => {
+  const agent = await Agent.findById(req.params.id).populate('currentOrderId');
+  if (!agent) {
+    return res.status(404).json({ success: false, error: 'Agent not found' });
+  }
+
+  // Fetch past 10 orders assigned to this agent
+  const pastOrders = await Order.find({
+    'deliveryAgent.agent': agent._id,
+    status: { $in: ['Delivered', 'Failed'] }
+  })
+    .sort({ updatedAt: -1 })
+    .limit(10);
+
+  res.status(200).json({
+    success: true,
+    agent,
+    currentOrder: agent.currentOrderId,
+    pastOrders,
+  });
+});
+
 module.exports = {
   listAgents,
   createAgent,
   deactivateAgent,
   activateAgent,
+  getAgentDetails,
 };

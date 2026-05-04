@@ -28,6 +28,9 @@ export default function AgentsPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newAgent, setNewAgent] = useState({ agentId: '', name: '', phone: '' });
   const [actionLoading, setActionLoading] = useState<string | null>(null);
+  const [selectedAgentId, setSelectedAgentId] = useState<string | null>(null);
+  const [agentDetails, setAgentDetails] = useState<any>(null);
+  const [detailsLoading, setDetailsLoading] = useState(false);
 
   // Guard: delivery_agents have no access to fleet management
   useEffect(() => {
@@ -77,6 +80,20 @@ export default function AgentsPage() {
       alert(error.response?.data?.error || 'Operation failed');
     } finally {
       setActionLoading(null);
+    }
+  };
+
+  const openDetails = async (id: string) => {
+    setSelectedAgentId(id);
+    setAgentDetails(null);
+    setDetailsLoading(true);
+    try {
+      const data = await agentsApi.getDetails(id);
+      setAgentDetails(data);
+    } catch (error) {
+      alert('Failed to load agent details');
+    } finally {
+      setDetailsLoading(false);
     }
   };
 
@@ -146,7 +163,11 @@ export default function AgentsPage() {
                 <tr><td colSpan={canToggle ? 5 : 4} className="py-10 text-center text-[var(--color-text-muted)]">No agents found matching your search.</td></tr>
               ) : (
                 filteredAgents.map((agent) => (
-                  <tr key={agent._id} className="hover:bg-white/5 transition-colors group">
+                  <tr 
+                    key={agent._id} 
+                    className="hover:bg-white/5 transition-colors group cursor-pointer"
+                    onClick={() => openDetails(agent._id)}
+                  >
                     <td className="px-6 py-4">
                       <div className="flex flex-col">
                         <span className="font-bold text-white">{agent.name}</span>
@@ -180,7 +201,7 @@ export default function AgentsPage() {
                         <Button
                           variant="secondary"
                           size="sm"
-                          onClick={() => toggleStatus(agent)}
+                          onClick={(e) => { e.stopPropagation(); toggleStatus(agent); }}
                           disabled={actionLoading === agent._id}
                           className={`text-[10px] uppercase font-bold tracking-widest ${agent.isActive ? 'hover:text-red-400' : 'hover:text-emerald-400'}`}
                         >
@@ -247,6 +268,83 @@ export default function AgentsPage() {
                 <Button type="submit" className="flex-1">Register Agent</Button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Agent Details Modal */}
+      {selectedAgentId && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl w-full max-w-2xl shadow-2xl animate-in zoom-in-95 duration-200 flex flex-col max-h-[90vh]">
+            <div className="p-6 border-b border-[var(--color-border)] flex items-center justify-between">
+              <h2 className="text-lg font-bold text-white flex items-center gap-2">
+                <ShieldCheck size={20} className="text-indigo-400" />
+                Agent Details
+              </h2>
+              <button onClick={() => setSelectedAgentId(null)} className="text-[var(--color-text-muted)] hover:text-white">
+                <XCircle size={20} />
+              </button>
+            </div>
+            
+            <div className="p-6 overflow-y-auto space-y-6">
+              {detailsLoading || !agentDetails ? (
+                <div className="text-center text-[var(--color-text-muted)] py-10">Loading details...</div>
+              ) : (
+                <>
+                  {/* Info Header */}
+                  <div className="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5">
+                    <div className="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 font-bold text-xl">
+                      {agentDetails.agent.name.charAt(0)}
+                    </div>
+                    <div>
+                      <h3 className="text-white font-bold text-lg">{agentDetails.agent.name}</h3>
+                      <p className="text-xs text-[var(--color-text-muted)]">{agentDetails.agent.agentId} • {agentDetails.agent.phone}</p>
+                    </div>
+                  </div>
+
+                  {/* Current Order */}
+                  <div>
+                    <h4 className="text-xs font-bold text-[var(--color-text-muted)] uppercase tracking-wider mb-3">Current Assignment</h4>
+                    {agentDetails.currentOrder ? (
+                      <div className="bg-amber-950/20 border border-amber-900/30 p-4 rounded-xl">
+                        <div className="flex justify-between items-start mb-2">
+                          <p className="text-sm font-bold text-white">{agentDetails.currentOrder.orderId}</p>
+                          <span className="text-[10px] font-bold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded uppercase">In Transit</span>
+                        </div>
+                        <p className="text-xs text-[var(--color-text-secondary)]">To: {agentDetails.currentOrder.customer.name}</p>
+                        <p className="text-xs text-[var(--color-text-muted)] truncate">{agentDetails.currentOrder.deliveryAddress.addressLine}, {agentDetails.currentOrder.deliveryAddress.city}</p>
+                      </div>
+                    ) : (
+                      <div className="bg-white/5 border border-white/5 p-4 rounded-xl text-center text-sm text-[var(--color-text-muted)]">
+                        No active assignments
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Past Orders */}
+                  <div>
+                    <h4 className="text-xs font-bold text-[var(--color-text-muted)] uppercase tracking-wider mb-3">Recent Deliveries</h4>
+                    {agentDetails.pastOrders.length === 0 ? (
+                      <div className="text-center text-sm text-[var(--color-text-muted)] bg-white/5 p-4 rounded-xl">No past deliveries found.</div>
+                    ) : (
+                      <div className="space-y-2">
+                        {agentDetails.pastOrders.map((o: any) => (
+                          <div key={o._id} className="flex items-center justify-between bg-white/5 p-3 rounded-lg border border-white/5">
+                            <div>
+                              <p className="text-xs font-bold text-white">{o.orderId}</p>
+                              <p className="text-[10px] text-[var(--color-text-muted)]">{o.deliveryAddress.city}</p>
+                            </div>
+                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded uppercase ${o.status === 'Delivered' ? 'text-emerald-400 bg-emerald-400/10' : 'text-red-400 bg-red-400/10'}`}>
+                              {o.status}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </>
+              )}
+            </div>
           </div>
         </div>
       )}

@@ -4,6 +4,7 @@ const {
   createAgent,
   deactivateAgent,
   activateAgent,
+  getAgentDetails,
 } = require('../controllers/agentController');
 const { protect, requireRole } = require('../middleware/auth');
 
@@ -18,6 +19,13 @@ router.get(
   '/',
   requireRole(['admin', 'operations_manager', 'warehouse_operator']),
   listAgents
+);
+
+// GET single agent details — accessible by admin and operations_manager
+router.get(
+  '/:id',
+  requireRole(['admin', 'operations_manager']),
+  getAgentDetails
 );
 
 // Create — only admin and operations_manager can register new agents
