@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { useDashboardStats } from '@/hooks/useDashboardStats';
 import { useOrders } from '@/hooks/useOrders';
@@ -31,6 +32,7 @@ import {
 } from 'lucide-react';
 
 export default function DashboardPage() {
+  const router = useRouter();
   const { user } = useAuth();
   const [statusFilter, setStatusFilter] = useState('all');
   const [delayedOnly, setDelayedOnly] = useState(false);
@@ -125,25 +127,28 @@ export default function DashboardPage() {
           {/* Quick Actions — role-gated */}
           <div className="flex flex-col gap-4 justify-center">
             {canCreateOrder(user) && (
-              <Link href="/orders/new">
-                <Button className="w-full justify-start gap-4 px-8 h-14 text-sm font-bold shadow-lg shadow-indigo-500/20">
-                  <PlusCircle size={20} /> Create New Order
-                </Button>
-              </Link>
+              <Button 
+                onClick={() => router.push('/orders/new')}
+                className="w-full justify-start gap-4 px-8 h-14 text-sm font-bold shadow-lg shadow-indigo-500/20"
+              >
+                <PlusCircle size={20} /> Create New Order
+              </Button>
             )}
             {canViewFleet(user) && (
-              <Link href="/dashboard/agents">
-                <Button variant="secondary" className="w-full justify-start gap-4 px-8 h-14 text-sm font-bold">
-                  <Users size={20} /> Fleet Dashboard
-                </Button>
-              </Link>
+              <Button 
+                variant="secondary" 
+                onClick={() => router.push('/dashboard/agents')}
+                className="w-full justify-start gap-4 px-8 h-14 text-sm font-bold"
+              >
+                <Users size={20} /> Fleet Dashboard
+              </Button>
             )}
           </div>
         </div>
       </section>
 
       {/* ── LAYER 2: OPERATIONS SUMMARY (MIDDLE) ─────────────────────────── */}
-      <section className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <StatsCard
           title="Total Orders"
           value={stats?.total ?? 0}
@@ -163,13 +168,6 @@ export default function DashboardPage() {
           value={stats?.inTransit ?? 0}
           icon={Truck}
           color="amber"
-          loading={statsLoading}
-        />
-        <StatsCard
-          title="SLA Breached"
-          value={stats?.delayed ?? 0}
-          icon={AlertTriangle}
-          color="red"
           loading={statsLoading}
         />
       </section>
