@@ -14,7 +14,8 @@ const signToken = (userId) =>
 
 // ─── POST /api/auth/register ─────────────────────────────────────────────────
 const register = asyncHandler(async (req, res) => {
-  const { name, email, password, role } = req.body;
+  const { name, password, role } = req.body;
+  const email = req.body.email?.trim().toLowerCase();
 
   // Check for existing email (Mongoose unique index will also catch this,
   // but checking here gives a cleaner error message before the DB round-trip)
@@ -44,7 +45,8 @@ const register = asyncHandler(async (req, res) => {
 
 // ─── POST /api/auth/login ────────────────────────────────────────────────────
 const login = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
+  const { password } = req.body;
+  const email = req.body.email?.trim().toLowerCase();
 
   // Explicitly select passwordHash (excluded by default via `select: false`)
   const user = await User.findOne({ email }).select('+passwordHash');
