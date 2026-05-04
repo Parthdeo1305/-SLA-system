@@ -38,6 +38,7 @@ export default function DashboardPage() {
   const [delayedOnly, setDelayedOnly] = useState(false);
   const [search, setSearch] = useState('');
   const [showInsights, setShowInsights] = useState(false);
+  const [showLiveFeed, setShowLiveFeed] = useState(true);
 
   // All hooks must be called unconditionally (Rules of Hooks).
   // When the user is a delivery_agent, these are unused — they render their own component.
@@ -187,20 +188,30 @@ export default function DashboardPage() {
           <h2 className="text-lg font-bold text-white flex items-center gap-2">
             <LayoutDashboard size={20} className="text-indigo-400" />
             Live Operations Feed
+            <button
+              onClick={() => setShowLiveFeed(!showLiveFeed)}
+              className="ml-4 text-[10px] uppercase tracking-wider font-bold text-indigo-400 bg-indigo-400/10 hover:bg-indigo-400/20 px-2 py-1 rounded transition-colors"
+            >
+              {showLiveFeed ? 'Hide' : 'Show'}
+            </button>
           </h2>
-          <FilterBar
-            statusFilter={statusFilter}
-            onStatusChange={setStatusFilter}
-            delayedOnly={delayedOnly}
-            onDelayedToggle={() => setDelayedOnly((d) => !d)}
-            search={search}
-            onSearchChange={setSearch}
-            totalResults={pagination.total}
-          />
+          {showLiveFeed && (
+            <FilterBar
+              statusFilter={statusFilter}
+              onStatusChange={setStatusFilter}
+              delayedOnly={delayedOnly}
+              onDelayedToggle={() => setDelayedOnly((d) => !d)}
+              search={search}
+              onSearchChange={setSearch}
+              totalResults={pagination.total}
+            />
+          )}
         </div>
-        <Card className="p-0 overflow-hidden shadow-2xl border-[var(--color-border)]/50 bg-[var(--color-surface)]">
-          <OrdersTable orders={orders} onRefresh={handleRefresh} loading={ordersLoading} />
-        </Card>
+        {showLiveFeed && (
+          <Card className="p-0 overflow-hidden shadow-2xl border-[var(--color-border)]/50 bg-[var(--color-surface)]">
+            <OrdersTable orders={orders} onRefresh={handleRefresh} loading={ordersLoading} />
+          </Card>
+        )}
       </section>
 
       {/* ── LAYER 4: INSIGHTS & ACTIVITY (COLLAPSIBLE) ───────────────────── */}
