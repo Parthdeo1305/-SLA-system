@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useOrders } from '@/hooks/useOrders';
 import OrdersTable from '@/components/dashboard/OrdersTable';
 import FilterBar from '@/components/dashboard/FilterBar';
@@ -8,9 +9,10 @@ import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import { RefreshCw, Package } from 'lucide-react';
 
-export default function AllOrdersPage() {
+function OrdersContent() {
+  const searchParams = useSearchParams();
   const [statusFilter, setStatusFilter] = useState('all');
-  const [delayedOnly, setDelayedOnly] = useState(false);
+  const [delayedOnly, setDelayedOnly] = useState(searchParams.get('delayed') === 'true');
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
 
@@ -109,5 +111,13 @@ export default function AllOrdersPage() {
         )}
       </Card>
     </div>
+  );
+}
+
+export default function AllOrdersPage() {
+  return (
+    <Suspense fallback={<div className="p-12 text-center text-[var(--color-text-muted)]">Loading orders...</div>}>
+      <OrdersContent />
+    </Suspense>
   );
 }
