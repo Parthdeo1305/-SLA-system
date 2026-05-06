@@ -86,8 +86,8 @@ export default function FilterBar({
         className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium border transition-all duration-150 cursor-pointer
           ${
             delayedOnly
-              ? 'bg-red-900/40 text-red-400 border-red-800'
-              : 'bg-[var(--color-surface-3)] text-[var(--color-text-secondary)] border-[var(--color-border)] hover:border-red-800 hover:text-red-400'
+              ? 'bg-red-900/40 text-[var(--color-danger-text)] border-red-800'
+              : 'bg-[var(--color-surface-3)] text-[var(--color-text-secondary)] border-[var(--color-border)] hover:border-red-800 hover:text-[var(--color-danger-text)]'
           }`}
       >
         <AlertTriangle size={13} />

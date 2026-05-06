@@ -123,7 +123,7 @@ export default function NewOrderPage() {
       </div>
 
       {globalError && (
-        <div className="flex items-center gap-2 p-3 mb-6 rounded-lg bg-red-950/40 border border-red-900/50 text-red-400 text-sm">
+        <div className="flex items-center gap-2 p-3 mb-6 rounded-lg bg-[var(--color-danger-bg)] border border-red-900/50 text-[var(--color-danger-text)] text-sm">
           <AlertCircle size={15} className="flex-shrink-0" />
           {globalError}
         </div>
@@ -133,7 +133,7 @@ export default function NewOrderPage() {
         <form onSubmit={handleSubmit} className="space-y-5" noValidate>
           {/* Customer Section */}
           <div className="space-y-4">
-            <h3 className="text-xs font-bold text-indigo-400 uppercase tracking-widest flex items-center gap-2">
+            <h3 className="text-xs font-bold text-[var(--color-brand-text)] uppercase tracking-widest flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
               Customer Information
             </h3>
@@ -157,7 +157,7 @@ export default function NewOrderPage() {
 
           {/* Pickup Address */}
           <div className="space-y-4">
-            <h3 className="text-xs font-bold text-indigo-400 uppercase tracking-widest flex items-center gap-2">
+            <h3 className="text-xs font-bold text-[var(--color-brand-text)] uppercase tracking-widest flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
               Pickup Origin
             </h3>
@@ -188,7 +188,7 @@ export default function NewOrderPage() {
 
           {/* Delivery Address */}
           <div className="space-y-4">
-            <h3 className="text-xs font-bold text-indigo-400 uppercase tracking-widest flex items-center gap-2">
+            <h3 className="text-xs font-bold text-[var(--color-brand-text)] uppercase tracking-widest flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
               Delivery Destination
             </h3>
@@ -236,7 +236,7 @@ export default function NewOrderPage() {
                     handleChange('promisedDeliveryTime', toDatetimeLocal(p.value()))
                   }
                   className="px-3 py-1 text-xs rounded-full border border-[var(--color-border)]
-                    text-[var(--color-text-secondary)] hover:border-indigo-500 hover:text-indigo-400
+                    text-[var(--color-text-secondary)] hover:border-indigo-500 hover:text-[var(--color-brand-text)]
                     transition-all duration-150 cursor-pointer"
                 >
                   {p.label}
@@ -282,8 +282,8 @@ export default function NewOrderPage() {
 
           {/* Info box */}
           <div className="flex gap-2 p-3 rounded-lg bg-indigo-950/30 border border-indigo-900/40">
-            <Info size={14} className="text-indigo-400 mt-0.5 flex-shrink-0" />
-            <p className="text-xs text-indigo-400/80">
+            <Info size={14} className="text-[var(--color-brand-text)] mt-0.5 flex-shrink-0" />
+            <p className="text-xs text-[var(--color-brand-text)]/80">
               Order will be created with status <strong>Created</strong>. Warehouse staff
               can advance it through the status flow: Created → Picked → In Transit → Delivered.
             </p>

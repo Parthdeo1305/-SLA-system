@@ -46,14 +46,14 @@ export default function LoginPage() {
           </div>
           <div>
             <p className="font-bold text-[var(--color-text-primary)] text-lg leading-none">ShipTrack</p>
-            <p className="text-xs text-indigo-400">Logistics Platform</p>
+            <p className="text-xs text-[var(--color-brand-text)]">Logistics Platform</p>
           </div>
         </div>
 
         <div>
           <h1 className="text-4xl font-bold text-[var(--color-text-primary)] leading-tight mb-4">
             Operational visibility<br />
-            <span className="text-indigo-400">in real time.</span>
+            <span className="text-[var(--color-brand-text)]">in real time.</span>
           </h1>
           <p className="text-[var(--color-text-secondary)] text-lg leading-relaxed">
             Track every shipment, detect SLA breaches the moment they happen,
@@ -97,7 +97,7 @@ export default function LoginPage() {
           </p>
 
           {error && (
-            <div className="flex items-center gap-2 p-3 mb-5 rounded-lg bg-red-950/40 border border-red-900/50 text-red-400 text-sm">
+            <div className="flex items-center gap-2 p-3 mb-5 rounded-lg bg-[var(--color-danger-bg)] border border-red-900/50 text-[var(--color-danger-text)] text-sm">
               <AlertCircle size={15} className="flex-shrink-0" />
               {error}
             </div>
@@ -125,7 +125,7 @@ export default function LoginPage() {
                 </label>
                 <Link 
                   href="/forgot-password" 
-                  className="text-xs font-medium text-indigo-400 hover:text-indigo-300 transition-colors"
+                  className="text-xs font-medium text-[var(--color-brand-text)] hover:text-indigo-300 transition-colors"
                 >
                   Forgot password?
                 </Link>
@@ -163,7 +163,7 @@ export default function LoginPage() {
 
           <p className="text-center text-sm text-[var(--color-text-secondary)] mt-6">
             Don&apos;t have an account?{' '}
-            <Link href="/signup" className="text-indigo-400 hover:text-indigo-300 font-medium">
+            <Link href="/signup" className="text-[var(--color-brand-text)] hover:text-indigo-300 font-medium">
               Create one
             </Link>
           </p>

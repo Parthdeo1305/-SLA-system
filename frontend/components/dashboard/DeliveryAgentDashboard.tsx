@@ -25,10 +25,10 @@ interface Props {
 function StatusBadge({ status }: { status: string }) {
   const map: Record<string, string> = {
     Created: 'bg-slate-500/10 text-slate-400 border-slate-500/20',
-    Picked: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
-    'In Transit': 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
-    Delivered: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
-    Failed: 'bg-red-500/10 text-red-400 border-red-500/20',
+    Picked: 'bg-amber-500/10 text-[var(--badge-transit-text)] border-amber-500/20',
+    'In Transit': 'bg-[var(--color-brand-bg)] text-[var(--color-brand-text)] border-indigo-500/20',
+    Delivered: 'bg-emerald-500/10 text-[var(--badge-delivered-text)] border-emerald-500/20',
+    Failed: 'bg-red-500/10 text-[var(--color-danger-text)] border-red-500/20',
   };
   return (
     <span
@@ -43,7 +43,7 @@ function StatusBadge({ status }: { status: string }) {
 function SLABadge({ order }: { order: Order }) {
   if (!order.isDelayed) return null;
   return (
-    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded border border-red-500/30 bg-red-500/10 text-red-400 text-[9px] font-bold uppercase">
+    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded border border-red-500/30 bg-red-500/10 text-[var(--color-danger-text)] text-[9px] font-bold uppercase">
       <AlertTriangle size={9} />
       SLA Breached
     </span>
@@ -83,7 +83,7 @@ export default function DeliveryAgentDashboard({ user }: Props) {
       {/* ── Header ──────────────────────────────────────────────────────── */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <p className="text-xs font-bold text-indigo-400 uppercase tracking-[0.2em] mb-1">
+          <p className="text-xs font-bold text-[var(--color-brand-text)] uppercase tracking-[0.2em] mb-1">
             Delivery Agent Portal
           </p>
           <h1 className="text-2xl font-black text-[var(--color-text-primary)]">
@@ -106,7 +106,7 @@ export default function DeliveryAgentDashboard({ user }: Props) {
       <div className="grid grid-cols-3 gap-4">
         <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-5 flex flex-col gap-1">
           <div className="flex items-center gap-2 text-[var(--color-text-muted)] text-xs font-semibold uppercase tracking-wider mb-2">
-            <Navigation size={12} className="text-indigo-400" />
+            <Navigation size={12} className="text-[var(--color-brand-text)]" />
             Active
           </div>
           <p className="text-3xl font-black text-[var(--color-text-primary)]">{loading ? '—' : activeOrders.length}</p>
@@ -114,18 +114,18 @@ export default function DeliveryAgentDashboard({ user }: Props) {
         </div>
         <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-5 flex flex-col gap-1">
           <div className="flex items-center gap-2 text-[var(--color-text-muted)] text-xs font-semibold uppercase tracking-wider mb-2">
-            <CheckCircle2 size={12} className="text-emerald-400" />
+            <CheckCircle2 size={12} className="text-[var(--badge-delivered-text)]" />
             Delivered Today
           </div>
-          <p className="text-3xl font-black text-emerald-400">{loading ? '—' : deliveredToday.length}</p>
+          <p className="text-3xl font-black text-[var(--badge-delivered-text)]">{loading ? '—' : deliveredToday.length}</p>
           <p className="text-xs text-[var(--color-text-muted)]">completed</p>
         </div>
         <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-5 flex flex-col gap-1">
           <div className="flex items-center gap-2 text-[var(--color-text-muted)] text-xs font-semibold uppercase tracking-wider mb-2">
-            <AlertTriangle size={12} className="text-red-400" />
+            <AlertTriangle size={12} className="text-[var(--color-danger-text)]" />
             SLA Breached
           </div>
-          <p className="text-3xl font-black text-red-400">{loading ? '—' : delayedOrders.length}</p>
+          <p className="text-3xl font-black text-[var(--color-danger-text)]">{loading ? '—' : delayedOrders.length}</p>
           <p className="text-xs text-[var(--color-text-muted)]">need attention</p>
         </div>
       </div>
@@ -134,7 +134,7 @@ export default function DeliveryAgentDashboard({ user }: Props) {
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <h2 className="text-sm font-bold text-[var(--color-text-primary)] uppercase tracking-wider flex items-center gap-2">
-            <Package size={14} className="text-indigo-400" />
+            <Package size={14} className="text-[var(--color-brand-text)]" />
             My Assigned Orders
             {!loading && (
               <span className="text-[10px] font-normal text-[var(--color-text-muted)] normal-case tracking-normal ml-1">
@@ -175,11 +175,11 @@ export default function DeliveryAgentDashboard({ user }: Props) {
                   {/* Left: Order info */}
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-lg bg-indigo-600/15 border border-indigo-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Package size={16} className="text-indigo-400" />
+                      <Package size={16} className="text-[var(--color-brand-text)]" />
                     </div>
                     <div className="space-y-1">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <p className="text-xs font-mono font-bold text-indigo-400">{order.orderId}</p>
+                        <p className="text-xs font-mono font-bold text-[var(--color-brand-text)]">{order.orderId}</p>
                         <StatusBadge status={order.status} />
                         <SLABadge order={order} />
                       </div>
@@ -200,8 +200,8 @@ export default function DeliveryAgentDashboard({ user }: Props) {
                   {/* Right: Due time + action */}
                   <div className="flex items-center gap-4 sm:flex-col sm:items-end">
                     <div className="flex items-center gap-1.5 text-xs">
-                      <Clock size={10} className={order.isDelayed ? 'text-red-400' : 'text-[var(--color-text-muted)]'} />
-                      <span className={order.isDelayed ? 'text-red-400 font-semibold' : 'text-[var(--color-text-muted)]'}>
+                      <Clock size={10} className={order.isDelayed ? 'text-[var(--color-danger-text)]' : 'text-[var(--color-text-muted)]'} />
+                      <span className={order.isDelayed ? 'text-[var(--color-danger-text)] font-semibold' : 'text-[var(--color-text-muted)]'}>
                         {order.isDelayed
                           ? `${order.delayDuration} overdue`
                           : order.timeUntilDue
@@ -209,7 +209,7 @@ export default function DeliveryAgentDashboard({ user }: Props) {
                           : '—'}
                       </span>
                     </div>
-                    <div className="flex items-center gap-1 text-xs text-indigo-400 opacity-0 group-hover:opacity-100 transition-all translate-x-[-4px] group-hover:translate-x-0">
+                    <div className="flex items-center gap-1 text-xs text-[var(--color-brand-text)] opacity-0 group-hover:opacity-100 transition-all translate-x-[-4px] group-hover:translate-x-0">
                       Update status
                       <ChevronRight size={12} />
                     </div>

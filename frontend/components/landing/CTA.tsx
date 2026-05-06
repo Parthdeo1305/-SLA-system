@@ -42,7 +42,7 @@ export default function CTA() {
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
-              <Link href="/signup" className="bg-white text-indigo-600 px-10 py-5 rounded-2xl font-black text-lg flex items-center gap-3 hover:bg-white/90 transition-all shadow-xl shadow-black/10">
+              <Link href="/signup" className="bg-white text-[var(--color-brand-text)] px-10 py-5 rounded-2xl font-black text-lg flex items-center gap-3 hover:bg-white/90 transition-all shadow-xl shadow-black/10">
                 <span>Get Started Now</span>
                 <ArrowRight size={20} strokeWidth={3} />
               </Link>

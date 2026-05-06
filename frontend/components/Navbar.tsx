@@ -36,7 +36,7 @@ export default function Navbar() {
           </div>
           <div>
             <p className="font-bold text-[var(--color-text-primary)] text-lg leading-none">ShipTrack</p>
-            <p className="text-[10px] text-indigo-400 font-bold uppercase tracking-wider">Logistics SaaS</p>
+            <p className="text-[10px] text-[var(--color-brand-text)] font-bold uppercase tracking-wider">Logistics SaaS</p>
           </div>
         </Link>
 

@@ -9,11 +9,11 @@ interface StatusBadgeProps {
 }
 
 const STATUS_STYLES: Record<OrderStatus, string> = {
-  Created: 'bg-slate-800 text-slate-300 border-slate-700',
-  Picked: 'bg-blue-950 text-blue-300 border-blue-800',
-  'In Transit': 'bg-amber-950 text-amber-300 border-amber-800',
-  Delivered: 'bg-emerald-950 text-emerald-300 border-emerald-800',
-  Failed: 'bg-red-950 text-red-400 border-red-900',
+  Created: 'bg-[var(--badge-created-bg)] text-[var(--badge-created-text)] border-[var(--badge-created-border)]',
+  Picked: 'bg-[var(--badge-picked-bg)] text-[var(--badge-picked-text)] border-[var(--badge-picked-border)]',
+  'In Transit': 'bg-[var(--badge-transit-bg)] text-[var(--badge-transit-text)] border-[var(--badge-transit-border)]',
+  Delivered: 'bg-[var(--badge-delivered-bg)] text-[var(--badge-delivered-text)] border-[var(--badge-delivered-border)]',
+  Failed: 'bg-[var(--badge-failed-bg)] text-[var(--badge-failed-text)] border-[var(--badge-failed-border)]',
 };
 
 const STATUS_DOTS: Record<OrderStatus, string> = {
@@ -35,7 +35,7 @@ export default function StatusBadge({
 
   const baseClasses = `inline-flex items-center gap-1.5 font-medium rounded-full border
     ${size === 'sm' ? 'px-2 py-0.5 text-xs' : 'px-3 py-1 text-xs'}
-    ${isDelayed ? 'bg-red-950 text-red-400 border-red-900' : isWarning ? 'bg-amber-950 text-amber-300 border-amber-800' : STATUS_STYLES[status]}`;
+    ${isDelayed ? 'bg-[var(--badge-failed-bg)] text-[var(--badge-failed-text)] border-[var(--badge-failed-border)]' : isWarning ? 'bg-[var(--badge-transit-bg)] text-[var(--badge-transit-text)] border-[var(--badge-transit-border)]' : STATUS_STYLES[status]}`;
 
   const dotClass = isDelayed
     ? 'bg-red-500 animate-pulse'
@@ -50,12 +50,12 @@ export default function StatusBadge({
         {status}
       </span>
       {isDelayed && delayDuration && (
-        <span className="text-xs text-red-400 font-medium pl-1">
+        <span className="text-xs text-[var(--color-danger-text)] font-medium pl-1">
           +{delayDuration} late
         </span>
       )}
       {isWarning && timeUntilDue && (
-        <span className="text-xs text-amber-400 font-medium pl-1">
+        <span className="text-xs text-[var(--badge-transit-text)] font-medium pl-1">
           ⚡ {timeUntilDue}
         </span>
       )}

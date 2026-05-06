@@ -49,7 +49,7 @@ export default function DelayAnalytics({ reasons, locations }: DelayAnalyticsPro
     <>
       <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl overflow-hidden flex flex-col h-full shadow-xl">
         <div className="p-4 border-b border-[var(--color-border)] flex items-center gap-2">
-          <PieChart size={18} className="text-indigo-400" />
+          <PieChart size={18} className="text-[var(--color-brand-text)]" />
           <h3 className="text-sm font-bold text-[var(--color-text-primary)] uppercase tracking-wider">Delay Root Causes</h3>
         </div>
 
@@ -66,7 +66,7 @@ export default function DelayAnalytics({ reasons, locations }: DelayAnalyticsPro
                   onClick={() => openReasonModal(r._id)}
                 >
                   <div className="flex justify-between text-xs font-medium">
-                    <span className="text-[var(--color-text-primary)] group-hover:text-indigo-400 transition-colors">{r._id || 'Unspecified'}</span>
+                    <span className="text-[var(--color-text-primary)] group-hover:text-[var(--color-brand-text)] transition-colors">{r._id || 'Unspecified'}</span>
                     <span className="text-[var(--color-text-muted)] group-hover:text-[var(--color-text-primary)] transition-colors">{r.count} shipments</span>
                   </div>
                   <div className="h-1.5 w-full bg-[var(--color-surface-hover)] rounded-full overflow-hidden">
@@ -82,7 +82,7 @@ export default function DelayAnalytics({ reasons, locations }: DelayAnalyticsPro
 
           <div className="pt-4 border-t border-[var(--color-border)]">
             <div className="flex items-center gap-2 mb-4">
-              <Triangle size={14} className="text-amber-400 rotate-180" />
+              <Triangle size={14} className="text-[var(--badge-transit-text)] rotate-180" />
               <h4 className="text-xs font-bold text-[var(--color-text-primary)] uppercase tracking-wider">Top Delayed Hubs</h4>
             </div>
             <div className="space-y-3">
@@ -92,10 +92,10 @@ export default function DelayAnalytics({ reasons, locations }: DelayAnalyticsPro
                   className="flex items-center justify-between p-2 rounded-lg bg-[var(--color-surface-hover)] border border-[var(--color-border)] text-xs cursor-pointer hover:bg-[var(--color-surface-hover)] hover:border-indigo-500/50 transition-all group"
                   onClick={() => openHubModal(loc._id)}
                 >
-                  <span className="font-medium text-[var(--color-text-primary)] group-hover:text-indigo-400 transition-colors">{loc._id}</span>
+                  <span className="font-medium text-[var(--color-text-primary)] group-hover:text-[var(--color-brand-text)] transition-colors">{loc._id}</span>
                   <div className="flex items-center gap-3">
                     <span className="text-[var(--color-text-muted)] group-hover:text-[var(--color-text-primary)]/70 transition-colors">{loc.shipments} total</span>
-                    <span className="text-red-400 font-bold group-hover:text-red-300 transition-colors">{loc.delays} delayed</span>
+                    <span className="text-[var(--color-danger-text)] font-bold group-hover:text-red-300 transition-colors">{loc.delays} delayed</span>
                   </div>
                 </div>
               ))}

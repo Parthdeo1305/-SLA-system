@@ -26,7 +26,7 @@ export default function QuickActionPanel() {
   return (
     <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-5 shadow-xl">
       <div className="flex items-center gap-2 mb-4">
-        <Zap size={18} className="text-amber-400" />
+        <Zap size={18} className="text-[var(--badge-transit-text)]" />
         <h3 className="text-sm font-bold text-[var(--color-text-primary)] uppercase tracking-wider">Quick Actions</h3>
       </div>
       

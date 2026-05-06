@@ -103,7 +103,7 @@ export default function UsersPage() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
         <div>
           <h1 className="text-2xl font-bold text-[var(--color-text-primary)] flex items-center gap-2">
-            <UsersIcon className="text-indigo-400" />
+            <UsersIcon className="text-[var(--color-brand-text)]" />
             User Management
           </h1>
           <p className="text-[var(--color-text-secondary)] mt-1">
@@ -124,7 +124,7 @@ export default function UsersPage() {
       </div>
 
       {error && (
-        <div className="mb-6 p-4 bg-red-900/20 border border-red-500/30 rounded-lg flex items-center gap-3 text-red-400 text-sm">
+        <div className="mb-6 p-4 bg-red-900/20 border border-red-500/30 rounded-lg flex items-center gap-3 text-[var(--color-danger-text)] text-sm">
           <AlertCircle size={18} />
           {error}
         </div>
@@ -165,13 +165,13 @@ export default function UsersPage() {
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
                         <div className={`w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm ${
-                          u.isActive ? 'bg-indigo-600/20 text-indigo-400 border border-indigo-600/30' : 'bg-gray-800 text-gray-500 border border-gray-700'
+                          u.isActive ? 'bg-indigo-600/20 text-[var(--color-brand-text)] border border-indigo-600/30' : 'bg-gray-800 text-gray-500 border border-gray-700'
                         }`}>
                           {u.name.charAt(0).toUpperCase()}
                         </div>
                         <div>
                           <p className={`text-sm font-medium ${u.isActive ? 'text-[var(--color-text-primary)]' : 'text-[var(--color-text-muted)] line-through'}`}>
-                            {u.name} {u._id === currentUser.id && <span className="ml-1 text-[10px] bg-indigo-500/20 text-indigo-400 px-1.5 py-0.5 rounded border border-indigo-500/30 uppercase">You</span>}
+                            {u.name} {u._id === currentUser.id && <span className="ml-1 text-[10px] bg-indigo-500/20 text-[var(--color-brand-text)] px-1.5 py-0.5 rounded border border-indigo-500/30 uppercase">You</span>}
                           </p>
                           <p className="text-xs text-[var(--color-text-muted)]">{u.email}</p>
                         </div>
@@ -209,8 +209,8 @@ export default function UsersPage() {
                             className={`
                               p-2 rounded-lg transition-all duration-150
                               ${u.isActive 
-                                ? 'text-red-400 hover:bg-red-900/20 hover:text-red-300' 
-                                : 'text-emerald-400 hover:bg-emerald-900/20 hover:text-emerald-300'
+                                ? 'text-[var(--color-danger-text)] hover:bg-red-900/20 hover:text-red-300' 
+                                : 'text-[var(--badge-delivered-text)] hover:bg-emerald-900/20 hover:text-emerald-300'
                               }
                               disabled:opacity-50 disabled:cursor-not-allowed
                             `}
@@ -229,7 +229,7 @@ export default function UsersPage() {
                           <button
                             onClick={() => handleDeleteUser(u)}
                             disabled={actionLoading === u._id || deleteLoading === u._id}
-                            className="p-2 rounded-lg text-red-500 hover:bg-red-500/10 hover:text-red-400 transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="p-2 rounded-lg text-red-500 hover:bg-red-500/10 hover:text-[var(--color-danger-text)] transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed"
                             title="Permanently Remove User"
                           >
                             {deleteLoading === u._id ? (

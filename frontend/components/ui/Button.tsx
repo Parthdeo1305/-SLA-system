@@ -13,7 +13,7 @@ const VARIANT_STYLES = {
   secondary:
     'bg-[var(--color-surface-3)] hover:bg-[var(--color-border-hover)] text-[var(--color-text-primary)] border border-[var(--color-border)]',
   danger:
-    'bg-red-900/50 hover:bg-red-900 text-red-400 border border-red-900 hover:text-red-300',
+    'bg-red-900/50 hover:bg-red-900 text-[var(--color-danger-text)] border border-red-900 hover:text-red-300',
   ghost:
     'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-hover)]',
 };

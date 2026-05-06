@@ -8,15 +8,15 @@ const FEATURES = [
     title: 'Real-time SLA Monitoring',
     description: 'Our proprietary engine computes SLA status on the fly. No cron jobs, no delays—just pure real-time data.',
     icon: Zap,
-    color: 'text-indigo-400',
+    color: 'text-[var(--color-brand-text)]',
     bg: 'bg-indigo-400/10'
   },
   {
     title: 'Automated Breach Alerts',
     description: 'Get notified the exact millisecond a shipment crosses its promised delivery time. Reduce penalty exposure.',
     icon: Bell,
-    color: 'text-red-400',
-    bg: 'bg-red-400/10'
+    color: 'text-[var(--color-danger-text)]',
+    bg: 'bg-[var(--color-danger-bg-subtle)]'
   },
   {
     title: 'Operations Intelligence',
@@ -29,7 +29,7 @@ const FEATURES = [
     title: 'Enterprise Security',
     description: 'Role-based access control (RBAC), JWT authentication, and encrypted data at rest protect your shipment data.',
     icon: Shield,
-    color: 'text-emerald-400',
+    color: 'text-[var(--badge-delivered-text)]',
     bg: 'bg-emerald-400/10'
   },
   {
@@ -43,7 +43,7 @@ const FEATURES = [
     title: 'Global Fleet Tracking',
     description: 'Track shipments across regions and timezones with built-in UTC normalization and local time rendering.',
     icon: Globe,
-    color: 'text-amber-400',
+    color: 'text-[var(--badge-transit-text)]',
     bg: 'bg-amber-400/10'
   }
 ];

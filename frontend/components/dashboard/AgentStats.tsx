@@ -19,7 +19,7 @@ export default function AgentStats({ agents }: AgentStatsProps) {
   return (
     <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl overflow-hidden flex flex-col h-full shadow-xl">
       <div className="p-4 border-b border-[var(--color-border)] flex items-center gap-2">
-        <Users size={18} className="text-indigo-400" />
+        <Users size={18} className="text-[var(--color-brand-text)]" />
         <h3 className="text-sm font-bold text-[var(--color-text-primary)] uppercase tracking-wider">Agent Performance</h3>
       </div>
 
@@ -27,7 +27,7 @@ export default function AgentStats({ agents }: AgentStatsProps) {
         {/* Top Performer */}
         <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/10 flex flex-col justify-between">
           <div>
-            <div className="flex items-center gap-2 text-emerald-400 mb-1">
+            <div className="flex items-center gap-2 text-[var(--badge-delivered-text)] mb-1">
               <Award size={14} />
               <span className="text-[10px] font-bold uppercase tracking-wider">Top Performer</span>
             </div>
@@ -42,7 +42,7 @@ export default function AgentStats({ agents }: AgentStatsProps) {
         {/* Attention Needed */}
         <div className="p-4 rounded-xl bg-red-500/5 border border-red-500/10 flex flex-col justify-between">
           <div>
-            <div className="flex items-center gap-2 text-red-400 mb-1">
+            <div className="flex items-center gap-2 text-[var(--color-danger-text)] mb-1">
               <TrendingDown size={14} />
               <span className="text-[10px] font-bold uppercase tracking-wider">Critical Focus</span>
             </div>
@@ -61,7 +61,7 @@ export default function AgentStats({ agents }: AgentStatsProps) {
                <tr className="text-[var(--color-text-muted)] font-semibold border-b border-[var(--color-border)]">
                  <th className="pb-2">Agent Name</th>
                  <th className="pb-2 text-right">Total</th>
-                 <th className="pb-2 text-right text-red-400">Delayed</th>
+                 <th className="pb-2 text-right text-[var(--color-danger-text)]">Delayed</th>
                </tr>
              </thead>
              <tbody className="divide-y divide-[var(--color-border)]">
@@ -69,7 +69,7 @@ export default function AgentStats({ agents }: AgentStatsProps) {
                  <tr key={a._id} className="group">
                    <td className="py-2.5 text-[var(--color-text-primary)] font-medium truncate max-w-[120px]">{a.name}</td>
                    <td className="py-2.5 text-right text-[var(--color-text-muted)]">{a.total}</td>
-                   <td className="py-2.5 text-right font-bold text-red-400/80">{a.delayed}</td>
+                   <td className="py-2.5 text-right font-bold text-[var(--color-danger-text)]/80">{a.delayed}</td>
                  </tr>
                ))}
              </tbody>

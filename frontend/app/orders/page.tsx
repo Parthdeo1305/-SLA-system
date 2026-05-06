@@ -33,7 +33,7 @@ function OrdersContent() {
       {/* Header */}
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-indigo-600/10 flex items-center justify-center text-indigo-400">
+          <div className="w-10 h-10 rounded-xl bg-indigo-600/10 flex items-center justify-center text-[var(--color-brand-text)]">
             <Package size={24} />
           </div>
           <div>
@@ -70,7 +70,7 @@ function OrdersContent() {
 
         {error ? (
           <div className="p-12 text-center">
-            <p className="text-red-400 text-sm mb-4">{error}</p>
+            <p className="text-[var(--color-danger-text)] text-sm mb-4">{error}</p>
             <Button variant="secondary" size="sm" onClick={refetch}>
               Try again
             </Button>

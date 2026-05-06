@@ -54,11 +54,11 @@ export default function HowItWorks() {
                 transition={{ delay: idx * 0.2, duration: 0.6 }}
                 className="relative bg-[var(--color-surface-hover)] border border-[var(--color-border)] rounded-3xl p-10 flex flex-col items-center text-center group"
               >
-                <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-[#111118] border border-[var(--color-border)] flex items-center justify-center text-indigo-400 font-bold text-sm z-10 group-hover:border-indigo-500/50 transition-colors">
+                <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-[#111118] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-brand-text)] font-bold text-sm z-10 group-hover:border-indigo-500/50 transition-colors">
                   {step.step}
                 </div>
                 
-                <div className="w-16 h-16 rounded-2xl bg-indigo-600/10 text-indigo-400 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                <div className="w-16 h-16 rounded-2xl bg-indigo-600/10 text-[var(--color-brand-text)] flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
                   <step.icon size={32} />
                 </div>
                 

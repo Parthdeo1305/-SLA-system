@@ -67,12 +67,12 @@ export default function OrdersTable({ orders, loading }: OrdersTableProps) {
                 group cursor-pointer transition-all duration-200 outline-none
                 hover:bg-[var(--color-surface-hover)] hover:shadow-lg hover:shadow-black/20
                 focus:bg-[var(--color-surface-hover)] focus:ring-2 focus:ring-inset focus:ring-indigo-500/50
-                ${order.isDelayed ? 'bg-red-950/10' : ''}
+                ${order.isDelayed ? 'bg-[var(--color-danger-bg-subtle)]' : ''}
               `}
             >
               {/* Order ID */}
               <td className="px-4 py-4">
-                <span className="font-mono text-xs font-medium text-indigo-400 bg-indigo-950/40 px-2 py-0.5 rounded border border-indigo-500/20">
+                <span className="font-mono text-xs font-medium text-[var(--color-brand-text)] bg-[var(--color-brand-bg)] px-2 py-0.5 rounded border border-indigo-500/20">
                   {order.orderId}
                 </span>
               </td>
@@ -97,7 +97,7 @@ export default function OrdersTable({ orders, loading }: OrdersTableProps) {
                 />
                 {order.isDelayed && order.delayReason && (
                   <div className="mt-1 flex items-center gap-1.5">
-                    <span className="text-[10px] font-bold text-red-400 bg-red-400/10 px-1.5 py-0.5 rounded border border-red-400/20 uppercase tracking-tighter">
+                    <span className="text-[10px] font-bold text-[var(--color-danger-text)] bg-[var(--color-danger-bg-subtle)] px-1.5 py-0.5 rounded border border-red-400/20 uppercase tracking-tighter">
                       {order.delayReason}
                     </span>
                   </div>
@@ -129,7 +129,7 @@ export default function OrdersTable({ orders, loading }: OrdersTableProps) {
 
               {/* SLA Deadline */}
               <td className="px-4 py-4">
-                <p className={`text-sm ${order.isDelayed ? 'text-red-400' : 'text-[var(--color-text-secondary)]'}`}>
+                <p className={`text-sm ${order.isDelayed ? 'text-[var(--color-danger-text)]' : 'text-[var(--color-text-secondary)]'}`}>
                   {format(new Date(order.promisedDeliveryTime), 'dd MMM yyyy')}
                 </p>
                 <p className="text-xs text-[var(--color-text-muted)]">

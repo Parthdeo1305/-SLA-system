@@ -74,7 +74,7 @@ export default function SignupPage() {
         </p>
 
         {globalError && (
-          <div className="flex items-center gap-2 p-3 mb-5 rounded-lg bg-red-950/40 border border-red-900/50 text-red-400 text-sm">
+          <div className="flex items-center gap-2 p-3 mb-5 rounded-lg bg-[var(--color-danger-bg)] border border-red-900/50 text-[var(--color-danger-text)] text-sm">
             <AlertCircle size={15} className="flex-shrink-0" />
             {globalError}
           </div>
@@ -141,7 +141,7 @@ export default function SignupPage() {
 
         <p className="text-center text-sm text-[var(--color-text-secondary)] mt-6">
           Already have an account?{' '}
-          <Link href="/login" className="text-indigo-400 hover:text-indigo-300 font-medium">
+          <Link href="/login" className="text-[var(--color-brand-text)] hover:text-indigo-300 font-medium">
             Sign in
           </Link>
         </p>

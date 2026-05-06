@@ -142,7 +142,7 @@ export default function OrderDetailPage() {
   if (error || !order) {
     return (
       <div className="p-8 text-center">
-        <p className="text-red-400 mb-3">{error || 'Order not found.'}</p>
+        <p className="text-[var(--color-danger-text)] mb-3">{error || 'Order not found.'}</p>
         <Link href="/dashboard">
           <Button variant="secondary">Back to Dashboard</Button>
         </Link>
@@ -169,7 +169,7 @@ export default function OrderDetailPage() {
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-xl font-bold text-[var(--color-text-primary)]">Order Detail</h1>
-              <span className="font-mono text-sm text-indigo-400 bg-indigo-950/40 px-2 py-0.5 rounded">
+              <span className="font-mono text-sm text-[var(--color-brand-text)] bg-[var(--color-brand-bg)] px-2 py-0.5 rounded">
                 {order.orderId}
               </span>
             </div>
@@ -189,12 +189,12 @@ export default function OrderDetailPage() {
       {/* SLA Alert */}
       {order.isDelayed && (
         <div className="flex items-center gap-3 p-4 rounded-xl bg-red-950/30 border border-red-900/50">
-          <AlertTriangle size={18} className="text-red-400 flex-shrink-0" />
+          <AlertTriangle size={18} className="text-[var(--color-danger-text)] flex-shrink-0" />
           <div>
             <p className="text-sm font-semibold text-red-300">
               SLA breached — {order.delayDuration} past deadline
             </p>
-            <p className="text-xs text-red-400/70 mt-0.5">
+            <p className="text-xs text-[var(--color-danger-text)]/70 mt-0.5">
               Advance the status or escalate immediately to minimise penalty impact.
             </p>
           </div>
@@ -239,10 +239,10 @@ export default function OrderDetailPage() {
           })}
           {order.status === 'Failed' && (
             <div className="absolute right-0 top-0 flex flex-col items-center gap-1.5">
-              <div className="w-8 h-8 rounded-full flex items-center justify-center border-2 bg-red-950 border-red-800 text-red-400">
+              <div className="w-8 h-8 rounded-full flex items-center justify-center border-2 bg-red-950 border-red-800 text-[var(--color-danger-text)]">
                 <AlertTriangle size={14} />
               </div>
-              <p className="text-xs text-red-400 font-medium">Failed</p>
+              <p className="text-xs text-[var(--color-danger-text)] font-medium">Failed</p>
             </div>
           )}
         </div>
@@ -291,7 +291,7 @@ export default function OrderDetailPage() {
                 <span className="text-[var(--color-text-muted)] mt-0.5">{icon}</span>
                 <div>
                   <p className="text-xs text-[var(--color-text-muted)]">{label}</p>
-                  <p className={`text-sm font-medium ${danger ? 'text-red-400' : 'text-[var(--color-text-primary)]'}`}>
+                  <p className={`text-sm font-medium ${danger ? 'text-[var(--color-danger-text)]' : 'text-[var(--color-text-primary)]'}`}>
                     {value}
                   </p>
                 </div>
@@ -324,7 +324,7 @@ export default function OrderDetailPage() {
               
               {/* Pickup */}
               <div className="space-y-3">
-                <div className="flex items-center gap-2 text-xs font-bold text-indigo-400 uppercase tracking-widest">
+                <div className="flex items-center gap-2 text-xs font-bold text-[var(--color-brand-text)] uppercase tracking-widest">
                   <div className="w-2 h-2 rounded-full bg-indigo-500" />
                   Pickup (Origin)
                 </div>
@@ -338,7 +338,7 @@ export default function OrderDetailPage() {
 
               {/* Delivery */}
               <div className="space-y-3">
-                <div className="flex items-center gap-2 text-xs font-bold text-emerald-400 uppercase tracking-widest">
+                <div className="flex items-center gap-2 text-xs font-bold text-[var(--badge-delivered-text)] uppercase tracking-widest">
                   <div className="w-2 h-2 rounded-full bg-emerald-500" />
                   Delivery (Destination)
                 </div>
@@ -402,7 +402,7 @@ export default function OrderDetailPage() {
                   {(log.location || log.note) && (
                     <div className="bg-[var(--color-surface-hover)] border border-[var(--color-border)] rounded-xl p-3 space-y-2">
                       {log.location && (
-                        <p className="text-xs text-indigo-400 font-medium">
+                        <p className="text-xs text-[var(--color-brand-text)] font-medium">
                           📍 {log.location}
                         </p>
                       )}
@@ -433,7 +433,7 @@ export default function OrderDetailPage() {
           </p>
 
           {updateError && (
-            <div className="mb-6 p-4 rounded-xl bg-red-950/40 border border-red-900/50 text-red-400 text-sm flex items-center gap-3">
+            <div className="mb-6 p-4 rounded-xl bg-[var(--color-danger-bg)] border border-red-900/50 text-[var(--color-danger-text)] text-sm flex items-center gap-3">
               <AlertTriangle size={18} />
               {updateError}
             </div>
@@ -488,7 +488,7 @@ export default function OrderDetailPage() {
                       ))}
                     </select>
                     {availableAgents.length === 0 && (
-                      <p className="text-[10px] text-amber-400 mt-1 font-medium italic">
+                      <p className="text-[10px] text-[var(--badge-transit-text)] mt-1 font-medium italic">
                         No available agents found. Please register or free up an agent first.
                       </p>
                     )}
@@ -526,8 +526,8 @@ export default function OrderDetailPage() {
                 {order.isDelayed && (
                   <div className="space-y-4 sm:col-span-2 pt-4 border-t border-[var(--color-border)]">
                     <div className="flex items-center gap-2">
-                      <AlertTriangle size={16} className="text-red-400" />
-                      <p className="text-xs font-bold text-red-400 uppercase tracking-wider">Delay Explainability Required</p>
+                      <AlertTriangle size={16} className="text-[var(--color-danger-text)]" />
+                      <p className="text-xs font-bold text-[var(--color-danger-text)] uppercase tracking-wider">Delay Explainability Required</p>
                     </div>
                     
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

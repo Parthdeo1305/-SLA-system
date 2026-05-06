@@ -52,7 +52,7 @@ export default function DashboardPreview() {
   return (
     <div className="relative w-full max-w-2xl mx-auto">
       {/* Decorative background glow */}
-      <div className="absolute -inset-4 bg-indigo-500/10 blur-2xl rounded-3xl -z-10" />
+      <div className="absolute -inset-4 bg-[var(--color-brand-bg)] blur-2xl rounded-3xl -z-10" />
       
       <div className="bg-[#111118]/80 backdrop-blur-xl border border-[var(--color-border)] rounded-2xl shadow-2xl overflow-hidden">
         {/* Header */}
@@ -66,7 +66,7 @@ export default function DashboardPreview() {
             <span className="text-xs font-medium text-[var(--color-text-primary)]/40 ml-2">Live Operations Overview</span>
           </div>
           <div className="flex gap-4">
-            <div className="flex items-center gap-1.5 text-xs text-emerald-400">
+            <div className="flex items-center gap-1.5 text-xs text-[var(--badge-delivered-text)]">
               <CheckCircle size={12} />
               <span>98.2% SLA</span>
             </div>
@@ -89,8 +89,8 @@ export default function DashboardPreview() {
             >
               <div className="flex items-center gap-3">
                 <div className={`p-2 rounded-lg ${
-                  order.status === 'Delivered' ? 'bg-emerald-500/10 text-emerald-400' : 
-                  order.delayed ? 'bg-red-500/10 text-red-400' : 'bg-indigo-500/10 text-indigo-400'
+                  order.status === 'Delivered' ? 'bg-emerald-500/10 text-[var(--badge-delivered-text)]' : 
+                  order.delayed ? 'bg-red-500/10 text-[var(--color-danger-text)]' : 'bg-[var(--color-brand-bg)] text-[var(--color-brand-text)]'
                 }`}>
                   {order.status === 'Delivered' ? <CheckCircle size={16} /> : 
                    order.status === 'In Transit' ? <Truck size={16} /> : 
@@ -105,7 +105,7 @@ export default function DashboardPreview() {
               <div className="flex items-center gap-6">
                 <div className="text-right">
                   <div className="text-[10px] uppercase tracking-wider text-[var(--color-text-primary)]/40 font-bold mb-0.5">SLA</div>
-                  <div className={`text-xs font-mono ${order.delayed ? 'text-red-400 font-bold' : 'text-[var(--color-text-primary)]/80'}`}>
+                  <div className={`text-xs font-mono ${order.delayed ? 'text-[var(--color-danger-text)] font-bold' : 'text-[var(--color-text-primary)]/80'}`}>
                     {order.sla}
                   </div>
                 </div>
@@ -118,9 +118,9 @@ export default function DashboardPreview() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -5 }}
                       className={`text-[10px] font-bold px-2 py-1 rounded-full text-center ${
-                        order.status === 'Delivered' ? 'bg-emerald-500/20 text-emerald-400' :
-                        order.delayed ? 'bg-red-500/20 text-red-400 animate-pulse' :
-                        order.status === 'In Transit' ? 'bg-indigo-500/20 text-indigo-400' :
+                        order.status === 'Delivered' ? 'bg-emerald-500/20 text-[var(--badge-delivered-text)]' :
+                        order.delayed ? 'bg-red-500/20 text-[var(--color-danger-text)] animate-pulse' :
+                        order.status === 'In Transit' ? 'bg-indigo-500/20 text-[var(--color-brand-text)]' :
                         'bg-[var(--color-surface-hover)] text-[var(--color-text-primary)]/60'
                       }`}
                     >

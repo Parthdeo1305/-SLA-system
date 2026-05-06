@@ -139,15 +139,15 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                   transition-all duration-150 group
                   ${
                     isActive
-                      ? 'bg-indigo-600/15 text-indigo-400 border border-indigo-600/20'
+                      ? 'bg-indigo-600/15 text-[var(--color-brand-text)] border border-indigo-600/20'
                       : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-hover)]'
                   }
                 `}
               >
-                <Icon size={16} className={isActive ? 'text-indigo-400' : 'text-current'} />
+                <Icon size={16} className={isActive ? 'text-[var(--color-brand-text)]' : 'text-current'} />
                 {label}
                 {isActive && (
-                  <ChevronRight size={14} className="ml-auto text-indigo-400" />
+                  <ChevronRight size={14} className="ml-auto text-[var(--color-brand-text)]" />
                 )}
               </Link>
             );
@@ -159,7 +159,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           {user && (
             <div className="flex items-center gap-3 mb-3">
               <div className="w-8 h-8 rounded-full bg-indigo-600/20 border border-indigo-600/30 flex items-center justify-center flex-shrink-0">
-                <span className="text-xs font-bold text-indigo-400">
+                <span className="text-xs font-bold text-[var(--color-brand-text)]">
                   {user.name.charAt(0).toUpperCase()}
                 </span>
               </div>
@@ -177,7 +177,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           )}
           <button
             onClick={handleLogout}
-            className="flex items-center gap-2 w-full px-3 py-2 rounded-lg text-sm text-[var(--color-text-secondary)] hover:text-red-400 hover:bg-red-900/20 transition-all duration-150"
+            className="flex items-center gap-2 w-full px-3 py-2 rounded-lg text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-danger-text)] hover:bg-red-900/20 transition-all duration-150"
           >
             <LogOut size={14} />
             Sign out

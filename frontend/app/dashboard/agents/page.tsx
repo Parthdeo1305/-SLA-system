@@ -110,7 +110,7 @@ export default function AgentsPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-[var(--color-text-primary)] flex items-center gap-2">
-            <Users className="text-indigo-400" />
+            <Users className="text-[var(--color-brand-text)]" />
             Agent Management
           </h1>
           <p className="text-[var(--color-text-secondary)] mt-1 text-sm">
@@ -171,18 +171,18 @@ export default function AgentsPage() {
                     <td className="px-6 py-4">
                       <div className="flex flex-col">
                         <span className="font-bold text-[var(--color-text-primary)]">{agent.name}</span>
-                        <span className="text-xs text-indigo-400 font-mono">{agent.agentId}</span>
+                        <span className="text-xs text-[var(--color-brand-text)] font-mono">{agent.agentId}</span>
                       </div>
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2 text-[var(--color-text-secondary)]">
-                        <Phone size={12} className="text-indigo-400/50" />
+                        <Phone size={12} className="text-[var(--color-brand-text)]/50" />
                         {agent.phone}
                       </div>
                     </td>
                     <td className="px-6 py-4">
                       <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider
-                        ${agent.status === 'available' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'}
+                        ${agent.status === 'available' ? 'bg-emerald-500/10 text-[var(--badge-delivered-text)] border border-emerald-500/20' : 'bg-amber-500/10 text-[var(--badge-transit-text)] border border-amber-500/20'}
                       `}>
                         <div className={`w-1 h-1 rounded-full ${agent.status === 'available' ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'}`} />
                         {agent.status}
@@ -190,7 +190,7 @@ export default function AgentsPage() {
                     </td>
                     <td className="px-6 py-4">
                       <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded border
-                        ${agent.isActive ? 'text-indigo-400 border-indigo-400/20' : 'text-red-400 border-red-400/20'}
+                        ${agent.isActive ? 'text-[var(--color-brand-text)] border-indigo-400/20' : 'text-[var(--color-danger-text)] border-red-400/20'}
                       `}>
                         {agent.isActive ? 'Active' : 'Inactive'}
                       </span>
@@ -203,7 +203,7 @@ export default function AgentsPage() {
                           size="sm"
                           onClick={(e) => { e.stopPropagation(); toggleStatus(agent); }}
                           disabled={actionLoading === agent._id}
-                          className={`text-[10px] uppercase font-bold tracking-widest ${agent.isActive ? 'hover:text-red-400' : 'hover:text-emerald-400'}`}
+                          className={`text-[10px] uppercase font-bold tracking-widest ${agent.isActive ? 'hover:text-[var(--color-danger-text)]' : 'hover:text-[var(--badge-delivered-text)]'}`}
                         >
                           {actionLoading === agent._id ? (
                             <span className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin inline-block" />
@@ -225,7 +225,7 @@ export default function AgentsPage() {
           <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl w-full max-w-md shadow-2xl animate-in zoom-in-95 duration-200">
             <div className="p-6 border-b border-[var(--color-border)] flex items-center justify-between">
               <h2 className="text-lg font-bold text-[var(--color-text-primary)] flex items-center gap-2">
-                <UserPlus size={20} className="text-indigo-400" />
+                <UserPlus size={20} className="text-[var(--color-brand-text)]" />
                 Register New Agent
               </h2>
             </div>
@@ -278,7 +278,7 @@ export default function AgentsPage() {
           <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl w-full max-w-2xl shadow-2xl animate-in zoom-in-95 duration-200 flex flex-col max-h-[90vh]">
             <div className="p-6 border-b border-[var(--color-border)] flex items-center justify-between">
               <h2 className="text-lg font-bold text-[var(--color-text-primary)] flex items-center gap-2">
-                <ShieldCheck size={20} className="text-indigo-400" />
+                <ShieldCheck size={20} className="text-[var(--color-brand-text)]" />
                 Agent Details
               </h2>
               <button onClick={() => setSelectedAgentId(null)} className="text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]">
@@ -293,7 +293,7 @@ export default function AgentsPage() {
                 <>
                   {/* Info Header */}
                   <div className="flex items-center gap-4 bg-[var(--color-surface-hover)] p-4 rounded-xl border border-[var(--color-border)]">
-                    <div className="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 font-bold text-xl">
+                    <div className="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center text-[var(--color-brand-text)] font-bold text-xl">
                       {agentDetails.agent.name.charAt(0)}
                     </div>
                     <div>
@@ -311,8 +311,8 @@ export default function AgentsPage() {
                         className="bg-amber-950/20 border border-amber-900/30 p-4 rounded-xl cursor-pointer hover:bg-amber-900/20 hover:border-amber-500/50 transition-all group"
                       >
                         <div className="flex justify-between items-start mb-2">
-                          <p className="text-sm font-bold text-[var(--color-text-primary)] group-hover:text-indigo-400 transition-colors">{agentDetails.currentOrder.orderId}</p>
-                          <span className="text-[10px] font-bold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded uppercase">In Transit</span>
+                          <p className="text-sm font-bold text-[var(--color-text-primary)] group-hover:text-[var(--color-brand-text)] transition-colors">{agentDetails.currentOrder.orderId}</p>
+                          <span className="text-[10px] font-bold text-[var(--badge-transit-text)] bg-amber-400/10 px-2 py-0.5 rounded uppercase">In Transit</span>
                         </div>
                         <p className="text-xs text-[var(--color-text-secondary)]">To: {agentDetails.currentOrder.customer.name}</p>
                         <p className="text-xs text-[var(--color-text-muted)] truncate">{agentDetails.currentOrder.deliveryAddress.addressLine}, {agentDetails.currentOrder.deliveryAddress.city}</p>
@@ -335,13 +335,13 @@ export default function AgentsPage() {
                           <div 
                             key={o._id} 
                             onClick={() => router.push(`/orders/${o._id}`)}
-                            className="flex items-center justify-between bg-[var(--color-surface-hover)] p-3 rounded-lg border border-[var(--color-border)] cursor-pointer hover:bg-indigo-500/10 hover:border-indigo-500/30 transition-all group"
+                            className="flex items-center justify-between bg-[var(--color-surface-hover)] p-3 rounded-lg border border-[var(--color-border)] cursor-pointer hover:bg-[var(--color-brand-bg)] hover:border-indigo-500/30 transition-all group"
                           >
                             <div>
-                              <p className="text-xs font-bold text-[var(--color-text-primary)] group-hover:text-indigo-400 transition-colors">{o.orderId}</p>
+                              <p className="text-xs font-bold text-[var(--color-text-primary)] group-hover:text-[var(--color-brand-text)] transition-colors">{o.orderId}</p>
                               <p className="text-[10px] text-[var(--color-text-muted)]">{o.deliveryAddress.city}</p>
                             </div>
-                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded uppercase ${o.status === 'Delivered' ? 'text-emerald-400 bg-emerald-400/10' : 'text-red-400 bg-red-400/10'}`}>
+                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded uppercase ${o.status === 'Delivered' ? 'text-[var(--badge-delivered-text)] bg-emerald-400/10' : 'text-[var(--color-danger-text)] bg-[var(--color-danger-bg-subtle)]'}`}>
                               {o.status}
                             </span>
                           </div>

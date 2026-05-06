@@ -43,7 +43,7 @@ export default function SLAIndicator({ deadline, isTerminal }: SLAIndicatorProps
   if (isTerminal) return null;
 
   return (
-    <div className={`flex items-center gap-1.5 text-xs font-medium ${isDelayed ? 'text-red-400' : 'text-emerald-400'}`}>
+    <div className={`flex items-center gap-1.5 text-xs font-medium ${isDelayed ? 'text-[var(--color-danger-text)]' : 'text-[var(--badge-delivered-text)]'}`}>
       {isDelayed ? <AlertTriangle size={12} /> : <Clock size={12} />}
       <span>{timeLeft}</span>
     </div>

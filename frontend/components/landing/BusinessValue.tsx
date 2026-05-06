@@ -9,21 +9,21 @@ const METRICS = [
     value: '+40%',
     description: 'Increase in delivery reliability within the first 3 months of implementation.',
     icon: Clock,
-    color: 'text-emerald-400'
+    color: 'text-[var(--badge-delivered-text)]'
   },
   {
     label: 'OpEx Savings',
     value: '22%',
     description: 'Average reduction in operational costs by eliminating manual tracking calls.',
     icon: TrendingUp,
-    color: 'text-indigo-400'
+    color: 'text-[var(--color-brand-text)]'
   },
   {
     label: 'Penalty Reduction',
     value: '85%',
     description: 'Drastic drop in SLA breach penalties through proactive exception management.',
     icon: ShieldAlert,
-    color: 'text-red-400'
+    color: 'text-[var(--color-danger-text)]'
   }
 ];
 
@@ -37,7 +37,7 @@ export default function BusinessValue() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="flex items-center gap-2 text-indigo-400 font-bold uppercase tracking-widest text-xs mb-6"
+              className="flex items-center gap-2 text-[var(--color-brand-text)] font-bold uppercase tracking-widest text-xs mb-6"
             >
               <BadgeCheck size={16} />
               <span>Proven ROI</span>

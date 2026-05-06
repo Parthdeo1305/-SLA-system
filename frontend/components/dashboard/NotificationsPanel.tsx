@@ -17,7 +17,7 @@ export default function NotificationsPanel({ alerts }: NotificationsPanelProps) 
     <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl overflow-hidden flex flex-col h-full shadow-xl">
       <div className="p-4 border-b border-[var(--color-border)] flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Bell size={18} className="text-indigo-400" />
+          <Bell size={18} className="text-[var(--color-brand-text)]" />
           <h3 className="text-sm font-bold text-[var(--color-text-primary)] uppercase tracking-wider">Recent Activity</h3>
         </div>
       </div>
@@ -33,7 +33,7 @@ export default function NotificationsPanel({ alerts }: NotificationsPanelProps) 
               <div className="mt-1 w-2 h-2 rounded-full bg-indigo-500 flex-shrink-0 group-hover:scale-125 transition-transform" />
               <div className="space-y-1">
                 <p className="text-xs text-[var(--color-text-primary)] font-medium leading-relaxed">
-                  <span className="font-bold text-indigo-400 group-hover:underline">{alert.orderId}</span> moved to{' '}
+                  <span className="font-bold text-[var(--color-brand-text)] group-hover:underline">{alert.orderId}</span> moved to{' '}
                   <span className="text-indigo-300">{alert.status}</span>
                   {alert.agent && <span> by {alert.agent}</span>}
                 </p>

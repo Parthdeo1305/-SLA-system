@@ -37,7 +37,7 @@ export default function Hero() {
           animate="show"
           className="max-w-2xl"
         >
-          <motion.div variants={item} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--color-surface-hover)] border border-[var(--color-border)] text-indigo-400 text-xs font-bold uppercase tracking-widest mb-6">
+          <motion.div variants={item} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--color-surface-hover)] border border-[var(--color-border)] text-[var(--color-brand-text)] text-xs font-bold uppercase tracking-widest mb-6">
             <Zap size={12} className="fill-current" />
             <span>Next-Gen Logistics Engine</span>
           </motion.div>

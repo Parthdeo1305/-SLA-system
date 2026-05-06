@@ -28,6 +28,31 @@
   --color-text-secondary: #94a3b8; /* Soft slate */
   --color-text-muted: #64748b; /* Deeper slate */
 
+  /* Badges & Accents (Dark Mode) */
+  --badge-created-bg: #1e293b;
+  --badge-created-text: #cbd5e1;
+  --badge-created-border: #334155;
+  --badge-picked-bg: #172554;
+  --badge-picked-text: #93c5fd;
+  --badge-picked-border: #1e40af;
+  --badge-transit-bg: #431407;
+  --badge-transit-text: #fcd34d;
+  --badge-transit-border: #92400e;
+  --badge-delivered-bg: #022c22;
+  --badge-delivered-text: #6ee7b7;
+  --badge-delivered-border: #065f46;
+  --badge-failed-bg: #450a0a;
+  --badge-failed-text: #f87171;
+  --badge-failed-border: #7f1d1d;
+
+  --color-danger-bg: rgba(69, 10, 10, 0.4);
+  --color-danger-bg-subtle: rgba(69, 10, 10, 0.15);
+  --color-danger-border: rgba(127, 29, 29, 0.5);
+  --color-danger-text: #f87171;
+  --color-brand-bg: rgba(30, 27, 75, 0.4);
+  --color-brand-border: rgba(99, 102, 241, 0.2);
+  --color-brand-text: #818cf8;
+
   /* Effects */
   --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.16);
   --shadow-card-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
@@ -49,6 +74,31 @@ html.light {
   --color-text-primary: #0f172a; /* Slate 900 */
   --color-text-secondary: #475569; /* Slate 600 */
   --color-text-muted: #94a3b8; /* Slate 400 */
+
+  /* Badges & Accents (Light Mode) */
+  --badge-created-bg: #f1f5f9;
+  --badge-created-text: #475569;
+  --badge-created-border: #cbd5e1;
+  --badge-picked-bg: #eff6ff;
+  --badge-picked-text: #2563eb;
+  --badge-picked-border: #bfdbfe;
+  --badge-transit-bg: #fffbeb;
+  --badge-transit-text: #d97706;
+  --badge-transit-border: #fde68a;
+  --badge-delivered-bg: #ecfdf5;
+  --badge-delivered-text: #059669;
+  --badge-delivered-border: #a7f3d0;
+  --badge-failed-bg: #fef2f2;
+  --badge-failed-text: #dc2626;
+  --badge-failed-border: #fecaca;
+
+  --color-danger-bg: #fee2e2;
+  --color-danger-bg-subtle: #fef2f2;
+  --color-danger-border: #fca5a5;
+  --color-danger-text: #dc2626;
+  --color-brand-bg: #e0e7ff;
+  --color-brand-border: #c7d2fe;
+  --color-brand-text: #4f46e5;
 
   /* Effects */
   --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);

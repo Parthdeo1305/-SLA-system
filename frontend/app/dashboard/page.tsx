@@ -84,16 +84,16 @@ export default function DashboardPage() {
           {/* Main Delayed Ticker */}
           <div 
             onClick={() => { setStatusFilter('all'); setDelayedOnly(true); }}
-            className={`cursor-pointer transition-all duration-200 border rounded-2xl p-8 flex flex-col justify-center min-w-[280px] shadow-2xl ${delayedOnly ? 'bg-red-950/40 border-red-500 ring-2 ring-red-500 ring-offset-4 ring-offset-[var(--color-bg)]' : 'bg-red-950/20 border-red-900/30 shadow-red-950/20 hover:scale-[1.02]'}`}
+            className={`cursor-pointer transition-all duration-200 border rounded-2xl p-8 flex flex-col justify-center min-w-[280px] shadow-2xl ${delayedOnly ? 'bg-[var(--color-danger-bg)] border-red-500 ring-2 ring-red-500 ring-offset-4 ring-offset-[var(--color-bg)]' : 'bg-[var(--color-danger-bg-subtle)] border-red-900/30 shadow-red-950/20 hover:scale-[1.02]'}`}
           >
-            <p className="text-red-400 text-xs font-bold uppercase tracking-[0.2em] mb-2">SLA Breached</p>
+            <p className="text-[var(--color-danger-text)] text-xs font-bold uppercase tracking-[0.2em] mb-2">SLA Breached</p>
             <div className="flex items-baseline gap-3">
               <h2 className="text-7xl font-black text-[var(--color-text-primary)] leading-none">
                 {statsLoading ? '...' : stats?.delayed ?? 0}
               </h2>
-              <span className="text-red-400/50 text-sm font-medium">Orders</span>
+              <span className="text-[var(--color-danger-text)]/50 text-sm font-medium">Orders</span>
             </div>
-            <p className="text-red-400/70 text-xs mt-6 font-medium italic">Click to view delayed orders</p>
+            <p className="text-[var(--color-danger-text)]/70 text-xs mt-6 font-medium italic">Click to view delayed orders</p>
           </div>
 
           {/* Top 3 Critical Shipments */}
@@ -103,7 +103,7 @@ export default function DashboardPage() {
                 <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
                 Critical Escalations
               </h3>
-              <Link href="/orders?delayed=true" className="text-[10px] text-indigo-400 font-bold hover:underline tracking-widest">VIEW ALL</Link>
+              <Link href="/orders?delayed=true" className="text-[10px] text-[var(--color-brand-text)] font-bold hover:underline tracking-widest">VIEW ALL</Link>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 flex-1">
@@ -115,12 +115,12 @@ export default function DashboardPage() {
                 (analytics?.criticalShipments ?? []).slice(0, 3).map((s: any) => (
                   <Link key={s._id} href={`/orders/${s._id}`} className="block p-4 rounded-xl bg-[var(--color-surface-hover)] border border-[var(--color-border)] hover:border-indigo-500/30 transition-all group flex flex-col justify-between">
                     <div>
-                      <p className="text-[10px] font-mono font-bold text-indigo-400 mb-1">{s.orderId}</p>
+                      <p className="text-[10px] font-mono font-bold text-[var(--color-brand-text)] mb-1">{s.orderId}</p>
                       <p className="text-sm font-bold text-[var(--color-text-primary)] truncate">{s.deliveryAddress?.city || 'Unknown'}</p>
                     </div>
                     <div className="flex items-center justify-between mt-4">
-                      <span className="text-[10px] font-bold text-red-400 bg-red-400/10 px-2 py-0.5 rounded border border-red-400/20">BREACHED</span>
-                      <ChevronRight size={12} className="text-indigo-400 opacity-0 group-hover:opacity-100 transition-all translate-x-[-4px] group-hover:translate-x-0" />
+                      <span className="text-[10px] font-bold text-[var(--color-danger-text)] bg-[var(--color-danger-bg-subtle)] px-2 py-0.5 rounded border border-red-400/20">BREACHED</span>
+                      <ChevronRight size={12} className="text-[var(--color-brand-text)] opacity-0 group-hover:opacity-100 transition-all translate-x-[-4px] group-hover:translate-x-0" />
                     </div>
                   </Link>
                 ))
@@ -186,11 +186,11 @@ export default function DashboardPage() {
       <section className="space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <h2 className="text-lg font-bold text-[var(--color-text-primary)] flex items-center gap-2">
-            <LayoutDashboard size={20} className="text-indigo-400" />
+            <LayoutDashboard size={20} className="text-[var(--color-brand-text)]" />
             Live Operations Feed
             <button
               onClick={() => setShowLiveFeed(!showLiveFeed)}
-              className="ml-4 text-[10px] uppercase tracking-wider font-bold text-indigo-400 bg-indigo-400/10 hover:bg-indigo-400/20 px-2 py-1 rounded transition-colors"
+              className="ml-4 text-[10px] uppercase tracking-wider font-bold text-[var(--color-brand-text)] bg-indigo-400/10 hover:bg-indigo-400/20 px-2 py-1 rounded transition-colors"
             >
               {showLiveFeed ? 'Hide' : 'Show'}
             </button>
@@ -218,10 +218,10 @@ export default function DashboardPage() {
       <section className="space-y-6 pt-8 border-t border-[var(--color-border)]">
         <button
           onClick={() => setShowInsights(!showInsights)}
-          className="flex items-center gap-3 text-xs font-bold text-[var(--color-text-muted)] uppercase tracking-[0.2em] hover:text-indigo-400 transition-all group"
+          className="flex items-center gap-3 text-xs font-bold text-[var(--color-text-muted)] uppercase tracking-[0.2em] hover:text-[var(--color-brand-text)] transition-all group"
         >
-          <div className="w-8 h-8 rounded-lg bg-[var(--color-surface-hover)] flex items-center justify-center group-hover:bg-indigo-500/10 transition-all">
-            <ChevronRight size={16} className={`transition-transform duration-300 ${showInsights ? 'rotate-90 text-indigo-400' : ''}`} />
+          <div className="w-8 h-8 rounded-lg bg-[var(--color-surface-hover)] flex items-center justify-center group-hover:bg-[var(--color-brand-bg)] transition-all">
+            <ChevronRight size={16} className={`transition-transform duration-300 ${showInsights ? 'rotate-90 text-[var(--color-brand-text)]' : ''}`} />
           </div>
           {showInsights ? 'Hide Advanced Analytics & Activity' : 'Show Advanced Analytics & Activity'}
         </button>

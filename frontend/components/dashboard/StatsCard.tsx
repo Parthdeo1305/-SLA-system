@@ -15,23 +15,23 @@ interface StatsCardProps {
 
 const COLOR_MAP = {
   indigo: {
-    icon: 'text-indigo-400 bg-indigo-600/15 border-indigo-600/20',
+    icon: 'text-[var(--color-brand-text)] bg-indigo-600/15 border-indigo-600/20',
     value: 'text-indigo-300',
     border: '',
   },
   emerald: {
-    icon: 'text-emerald-400 bg-emerald-600/15 border-emerald-600/20',
+    icon: 'text-[var(--badge-delivered-text)] bg-emerald-600/15 border-emerald-600/20',
     value: 'text-emerald-300',
     border: '',
   },
   amber: {
-    icon: 'text-amber-400 bg-amber-600/15 border-amber-600/20',
+    icon: 'text-[var(--badge-transit-text)] bg-amber-600/15 border-amber-600/20',
     value: 'text-amber-300',
     border: '',
   },
   red: {
-    icon: 'text-red-400 bg-red-600/15 border-red-600/20',
-    value: 'text-red-400',
+    icon: 'text-[var(--color-danger-text)] bg-red-600/15 border-red-600/20',
+    value: 'text-[var(--color-danger-text)]',
     border: 'border-red-900/40',
   },
   slate: {
@@ -61,7 +61,7 @@ export default function StatsCard({
     >
       <Card
         hover
-        className={`p-5 h-full ${highlight ? 'border-red-900/40 bg-red-950/20' : ''} ${isActive ? 'bg-indigo-600/5 border-indigo-600/30' : ''}`}
+        className={`p-5 h-full ${highlight ? 'border-red-900/40 bg-[var(--color-danger-bg-subtle)]' : ''} ${isActive ? 'bg-indigo-600/5 border-indigo-600/30' : ''}`}
       >
         <div className="flex items-start justify-between">
           <div className="flex-1">
@@ -88,7 +88,7 @@ export default function StatsCard({
         </div>
         {highlight && value > 0 && (
           <div className="mt-3 pt-3 border-t border-red-900/30">
-            <p className="text-xs text-red-400 font-medium">
+            <p className="text-xs text-[var(--color-danger-text)] font-medium">
               ⚠ Requires immediate attention
             </p>
           </div>
