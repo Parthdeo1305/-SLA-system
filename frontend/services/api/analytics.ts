@@ -16,6 +16,7 @@ export interface DashboardAnalytics {
     delays: number;
   }[];
   recentAlerts: {
+    id: string;
     orderId: string;
     status: string;
     timestamp: string;
