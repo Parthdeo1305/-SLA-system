@@ -94,7 +94,7 @@ export default function DelayAnalytics({ reasons, locations }: DelayAnalyticsPro
                 >
                   <span className="font-medium text-[var(--color-text-primary)] group-hover:text-[var(--color-brand-text)] transition-colors">{loc._id}</span>
                   <div className="flex items-center gap-3">
-                    <span className="text-[var(--color-text-muted)] group-hover:text-[var(--color-text-primary)]/70 transition-colors">{loc.shipments} total</span>
+                    <span className="text-[var(--color-text-muted)] group-hover:text-[var(--color-text-secondary)] transition-colors">{loc.shipments} total</span>
                     <span className="text-[var(--color-danger-text)] font-bold group-hover:text-red-300 transition-colors">{loc.delays} delayed</span>
                   </div>
                 </div>

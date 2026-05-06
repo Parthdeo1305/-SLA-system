@@ -63,7 +63,7 @@ export default function DashboardPreview() {
               <div className="w-2.5 h-2.5 rounded-full bg-amber-500/50" />
               <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/50" />
             </div>
-            <span className="text-xs font-medium text-[var(--color-text-primary)]/40 ml-2">Live Operations Overview</span>
+            <span className="text-xs font-medium text-[var(--color-text-muted)] ml-2">Live Operations Overview</span>
           </div>
           <div className="flex gap-4">
             <div className="flex items-center gap-1.5 text-xs text-[var(--badge-delivered-text)]">
@@ -98,14 +98,14 @@ export default function DashboardPreview() {
                 </div>
                 <div>
                   <div className="text-sm font-semibold text-[var(--color-text-primary)]">{order.orderId}</div>
-                  <div className="text-[10px] text-[var(--color-text-primary)]/40">{order.customer}</div>
+                  <div className="text-[10px] text-[var(--color-text-muted)]">{order.customer}</div>
                 </div>
               </div>
 
               <div className="flex items-center gap-6">
                 <div className="text-right">
-                  <div className="text-[10px] uppercase tracking-wider text-[var(--color-text-primary)]/40 font-bold mb-0.5">SLA</div>
-                  <div className={`text-xs font-mono ${order.delayed ? 'text-[var(--color-danger-text)] font-bold' : 'text-[var(--color-text-primary)]/80'}`}>
+                  <div className="text-[10px] uppercase tracking-wider text-[var(--color-text-muted)] font-bold mb-0.5">SLA</div>
+                  <div className={`text-xs font-mono ${order.delayed ? 'text-[var(--color-danger-text)] font-bold' : 'text-[var(--color-text-secondary)]'}`}>
                     {order.sla}
                   </div>
                 </div>
@@ -121,7 +121,7 @@ export default function DashboardPreview() {
                         order.status === 'Delivered' ? 'bg-emerald-500/20 text-[var(--badge-delivered-text)]' :
                         order.delayed ? 'bg-red-500/20 text-[var(--color-danger-text)] animate-pulse' :
                         order.status === 'In Transit' ? 'bg-indigo-500/20 text-[var(--color-brand-text)]' :
-                        'bg-[var(--color-surface-hover)] text-[var(--color-text-primary)]/60'
+                        'bg-[var(--color-surface-hover)] text-[var(--color-text-secondary)]'
                       }`}
                     >
                       {order.delayed ? 'SLA BREACH' : order.status.toUpperCase()}
@@ -138,11 +138,11 @@ export default function DashboardPreview() {
           <div className="flex gap-4">
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-              <span className="text-[10px] text-[var(--color-text-primary)]/40">On Track</span>
+              <span className="text-[10px] text-[var(--color-text-muted)]">On Track</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-              <span className="text-[10px] text-[var(--color-text-primary)]/40">Delayed</span>
+              <span className="text-[10px] text-[var(--color-text-muted)]">Delayed</span>
             </div>
           </div>
           <div className="text-[10px] text-[var(--color-text-primary)]/20 italic">Updating in real-time...</div>

@@ -60,14 +60,14 @@ export default function Features() {
             className="text-3xl lg:text-5xl font-bold text-[var(--color-text-primary)] mb-6"
           >
             Built for High-Velocity <br /> 
-            <span className="text-[var(--color-text-primary)]/40">Logistics Teams.</span>
+            <span className="text-[var(--color-text-muted)]">Logistics Teams.</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg text-[var(--color-text-primary)]/60 leading-relaxed"
+            className="text-lg text-[var(--color-text-secondary)] leading-relaxed"
           >
             We've stripped away the complexity of traditional WMS systems to focus 
             on what matters: getting shipments to customers on time, every time.
@@ -89,7 +89,7 @@ export default function Features() {
                 <feature.icon size={24} />
               </div>
               <h3 className="text-xl font-bold text-[var(--color-text-primary)] mb-3">{feature.title}</h3>
-              <p className="text-[var(--color-text-primary)]/60 text-sm leading-relaxed">
+              <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">
                 {feature.description}
               </p>
             </motion.div>

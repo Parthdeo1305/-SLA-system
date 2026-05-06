@@ -47,7 +47,7 @@ export default function LandingPage() {
             <div className="w-6 h-6 rounded bg-white" />
             <span className="font-bold text-[var(--color-text-primary)] text-sm">ShipTrack</span>
           </div>
-          <div className="flex gap-8 text-[var(--color-text-primary)]/40 text-sm">
+          <div className="flex gap-8 text-[var(--color-text-muted)] text-sm">
             <a href="#" className="hover:text-[var(--color-text-primary)] transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-[var(--color-text-primary)] transition-colors">Terms of Service</a>
             <a href="#" className="hover:text-[var(--color-text-primary)] transition-colors">Contact Support</a>

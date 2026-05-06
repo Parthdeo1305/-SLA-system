@@ -208,7 +208,7 @@ export default function DashboardPage() {
           )}
         </div>
         {showLiveFeed && (
-          <Card className="p-0 overflow-hidden shadow-2xl border-[var(--color-border)]/50 bg-[var(--color-surface)]">
+          <Card className="p-0 overflow-hidden shadow-2xl border-[var(--color-border)] bg-[var(--color-surface)]">
             <OrdersTable orders={orders} onRefresh={handleRefresh} loading={ordersLoading} />
           </Card>
         )}

@@ -24,7 +24,7 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-[var(--color-bg)]/80 backdrop-blur-md border-b border-[var(--color-border)] py-3' 
+          ? 'bg-[var(--color-bg-transparent)] backdrop-blur-md border-b border-[var(--color-border)] py-3' 
           : 'bg-transparent py-5'
       }`}
     >

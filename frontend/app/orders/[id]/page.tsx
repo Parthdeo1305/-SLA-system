@@ -415,7 +415,7 @@ export default function OrderDetailPage() {
                   )}
                   
                   <p className="text-[10px] text-[var(--color-text-muted)] mt-2 uppercase tracking-tight">
-                    Verified by OpID: <span className="text-[var(--color-text-primary)]/40">{log.updatedBy}</span>
+                    Verified by OpID: <span className="text-[var(--color-text-muted)]">{log.updatedBy}</span>
                   </p>
                 </div>
               </div>

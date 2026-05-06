@@ -49,7 +49,7 @@ export default function Hero() {
             </span>
           </motion.h1>
           
-          <motion.p variants={item} className="text-lg text-[var(--color-text-primary)]/60 mb-10 leading-relaxed max-w-lg">
+          <motion.p variants={item} className="text-lg text-[var(--color-text-secondary)] mb-10 leading-relaxed max-w-lg">
             Stop reacting to delays. ShipTrack empowers operations teams with predictive tracking, 
             instant breach detection, and an intelligent dashboard designed for mission-critical logistics.
           </motion.p>
@@ -68,15 +68,15 @@ export default function Hero() {
           <motion.div variants={item} className="mt-12 flex items-center gap-8 border-t border-[var(--color-border)] pt-12">
             <div className="flex flex-col gap-1">
               <span className="text-2xl font-bold text-[var(--color-text-primary)]">500+</span>
-              <span className="text-xs text-[var(--color-text-primary)]/40 font-medium uppercase tracking-wider">Fleet Partners</span>
+              <span className="text-xs text-[var(--color-text-muted)] font-medium uppercase tracking-wider">Fleet Partners</span>
             </div>
             <div className="w-px h-10 bg-[var(--color-surface-hover)]" />
             <div className="flex flex-col gap-1">
               <span className="text-2xl font-bold text-[var(--color-text-primary)]">99.9%</span>
-              <span className="text-xs text-[var(--color-text-primary)]/40 font-medium uppercase tracking-wider">Uptime SLA</span>
+              <span className="text-xs text-[var(--color-text-muted)] font-medium uppercase tracking-wider">Uptime SLA</span>
             </div>
             <div className="w-px h-10 bg-[var(--color-surface-hover)]" />
-            <div className="flex items-center gap-3 text-[var(--color-text-primary)]/60">
+            <div className="flex items-center gap-3 text-[var(--color-text-secondary)]">
               <ShieldCheck size={24} className="text-emerald-500" />
               <span className="text-xs font-medium leading-tight">ISO 27001 <br /> Certified</span>
             </div>

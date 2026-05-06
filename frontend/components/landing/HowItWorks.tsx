@@ -36,7 +36,7 @@ export default function HowItWorks() {
             className="text-3xl lg:text-5xl font-bold text-[var(--color-text-primary)] mb-6"
           >
             Streamlined <br /> 
-            <span className="text-[var(--color-text-primary)]/40">From Order to Delivery.</span>
+            <span className="text-[var(--color-text-muted)]">From Order to Delivery.</span>
           </motion.h2>
         </div>
 
@@ -63,7 +63,7 @@ export default function HowItWorks() {
                 </div>
                 
                 <h3 className="text-2xl font-bold text-[var(--color-text-primary)] mb-4">{step.title}</h3>
-                <p className="text-[var(--color-text-primary)]/60 leading-relaxed">
+                <p className="text-[var(--color-text-secondary)] leading-relaxed">
                   {step.description}
                 </p>
 

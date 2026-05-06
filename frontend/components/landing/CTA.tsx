@@ -32,7 +32,7 @@ export default function CTA() {
             of Your Logistics?
           </h2>
           
-          <p className="text-[var(--color-text-primary)]/80 text-lg lg:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-[var(--color-text-secondary)] text-lg lg:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
             Join 500+ operations teams who use ShipTrack to monitor their fleet 
             and deliver on their promises every single day.
           </p>
@@ -48,12 +48,12 @@ export default function CTA() {
               </Link>
             </motion.div>
             
-            <Link href="/login" className="text-[var(--color-text-primary)] font-bold text-lg hover:text-[var(--color-text-primary)]/80 transition-colors border-b-2 border-[var(--color-border)] pb-1">
+            <Link href="/login" className="text-[var(--color-text-primary)] font-bold text-lg hover:text-[var(--color-text-secondary)] transition-colors border-b-2 border-[var(--color-border)] pb-1">
               Talk to an Expert
             </Link>
           </div>
 
-          <p className="mt-12 text-[var(--color-text-primary)]/40 text-sm font-medium uppercase tracking-widest">
+          <p className="mt-12 text-[var(--color-text-muted)] text-sm font-medium uppercase tracking-widest">
             No credit card required • 14-day free trial
           </p>
         </motion.div>

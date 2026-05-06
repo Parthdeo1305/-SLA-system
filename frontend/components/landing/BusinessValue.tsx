@@ -50,7 +50,7 @@ export default function BusinessValue() {
               className="text-3xl lg:text-5xl font-bold text-[var(--color-text-primary)] mb-8 leading-tight"
             >
               Logistics Performance <br /> 
-              <span className="text-[var(--color-text-primary)]/40">Powered by Intelligence.</span>
+              <span className="text-[var(--color-text-muted)]">Powered by Intelligence.</span>
             </motion.h2>
             
             <motion.p 
@@ -58,7 +58,7 @@ export default function BusinessValue() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-lg text-[var(--color-text-primary)]/60 leading-relaxed mb-8"
+              className="text-lg text-[var(--color-text-secondary)] leading-relaxed mb-8"
             >
               We don't just track boxes. We provide the operational clarity needed 
               to turn logistics from a cost center into a competitive advantage. 
@@ -73,7 +73,7 @@ export default function BusinessValue() {
               className="grid gap-4"
             >
               {['Proprietary SLA computation engine', 'Zero-latency data synchronization', 'Audit-ready compliance reporting'].map((item) => (
-                <div key={item} className="flex items-center gap-3 text-[var(--color-text-primary)]/80">
+                <div key={item} className="flex items-center gap-3 text-[var(--color-text-secondary)]">
                   <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
                   <span className="text-sm font-medium">{item}</span>
                 </div>
@@ -97,9 +97,9 @@ export default function BusinessValue() {
                 <div>
                   <div className="flex items-baseline gap-3 mb-1">
                     <span className="text-3xl font-black text-[var(--color-text-primary)]">{metric.value}</span>
-                    <span className="text-sm font-bold text-[var(--color-text-primary)]/40 uppercase tracking-wider">{metric.label}</span>
+                    <span className="text-sm font-bold text-[var(--color-text-muted)] uppercase tracking-wider">{metric.label}</span>
                   </div>
-                  <p className="text-sm text-[var(--color-text-primary)]/60 leading-relaxed">
+                  <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
                     {metric.description}
                   </p>
                 </div>

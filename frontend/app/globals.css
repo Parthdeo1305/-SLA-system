@@ -16,7 +16,9 @@
 
   /* Surface (Dark Mode - Default) */
   --color-bg: #040914; /* Deep premium blue-black */
+  --color-bg-transparent: rgba(4, 9, 20, 0.8);
   --color-surface: #0b1120; /* Elevated card */
+  --color-surface-transparent: rgba(11, 17, 32, 0.8);
   --color-surface-2: #121b2d; /* Hovered cards */
   --color-surface-3: #1e293b; /* Input backgrounds */
   --color-surface-hover: rgba(255, 255, 255, 0.05);
@@ -63,7 +65,9 @@
 html.light {
   /* Surface (Light Mode) */
   --color-bg: #f8fafc; /* Clean slate-50 */
+  --color-bg-transparent: rgba(248, 250, 252, 0.8);
   --color-surface: #ffffff; /* Pure white cards */
+  --color-surface-transparent: rgba(255, 255, 255, 0.8);
   --color-surface-2: #f1f5f9; /* Slate 100 for hover */
   --color-surface-3: #e2e8f0; /* Inputs */
   --color-surface-hover: rgba(0, 0, 0, 0.04);
