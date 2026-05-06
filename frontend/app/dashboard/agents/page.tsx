@@ -109,7 +109,7 @@ export default function AgentsPage() {
     <div className="p-6 lg:p-8 space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-white flex items-center gap-2">
+          <h1 className="text-2xl font-bold text-[var(--color-text-primary)] flex items-center gap-2">
             <Users className="text-indigo-400" />
             Agent Management
           </h1>
@@ -123,7 +123,7 @@ export default function AgentsPage() {
             <Plus size={16} /> Add New Agent
           </Button>
         ) : (
-          <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-[var(--color-border)] text-[var(--color-text-muted)] text-sm cursor-not-allowed">
+          <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--color-surface-hover)] border border-[var(--color-border)] text-[var(--color-text-muted)] text-sm cursor-not-allowed">
             <Lock size={14} />
             View Only
           </div>
@@ -139,7 +139,7 @@ export default function AgentsPage() {
               placeholder="Search agents by name or ID..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-white/5 border border-[var(--color-border)] rounded-lg py-2 pl-10 pr-4 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
+              className="w-full bg-[var(--color-surface-hover)] border border-[var(--color-border)] rounded-lg py-2 pl-10 pr-4 text-sm text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
             />
           </div>
         </div>
@@ -165,12 +165,12 @@ export default function AgentsPage() {
                 filteredAgents.map((agent) => (
                   <tr 
                     key={agent._id} 
-                    className="hover:bg-white/5 transition-colors group cursor-pointer"
+                    className="hover:bg-[var(--color-surface-hover)] transition-colors group cursor-pointer"
                     onClick={() => openDetails(agent._id)}
                   >
                     <td className="px-6 py-4">
                       <div className="flex flex-col">
-                        <span className="font-bold text-white">{agent.name}</span>
+                        <span className="font-bold text-[var(--color-text-primary)]">{agent.name}</span>
                         <span className="text-xs text-indigo-400 font-mono">{agent.agentId}</span>
                       </div>
                     </td>
@@ -224,7 +224,7 @@ export default function AgentsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
           <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl w-full max-w-md shadow-2xl animate-in zoom-in-95 duration-200">
             <div className="p-6 border-b border-[var(--color-border)] flex items-center justify-between">
-              <h2 className="text-lg font-bold text-white flex items-center gap-2">
+              <h2 className="text-lg font-bold text-[var(--color-text-primary)] flex items-center gap-2">
                 <UserPlus size={20} className="text-indigo-400" />
                 Register New Agent
               </h2>
@@ -238,7 +238,7 @@ export default function AgentsPage() {
                   placeholder="e.g. AG-001"
                   value={newAgent.agentId}
                   onChange={e => setNewAgent({...newAgent, agentId: e.target.value})}
-                  className="w-full bg-white/5 border border-[var(--color-border)] rounded-lg p-2.5 text-sm text-white focus:ring-2 focus:ring-indigo-500/50 outline-none"
+                  className="w-full bg-[var(--color-surface-hover)] border border-[var(--color-border)] rounded-lg p-2.5 text-sm text-[var(--color-text-primary)] focus:ring-2 focus:ring-indigo-500/50 outline-none"
                 />
               </div>
               <div>
@@ -249,7 +249,7 @@ export default function AgentsPage() {
                   placeholder="e.g. Rahul Sharma"
                   value={newAgent.name}
                   onChange={e => setNewAgent({...newAgent, name: e.target.value})}
-                  className="w-full bg-white/5 border border-[var(--color-border)] rounded-lg p-2.5 text-sm text-white focus:ring-2 focus:ring-indigo-500/50 outline-none"
+                  className="w-full bg-[var(--color-surface-hover)] border border-[var(--color-border)] rounded-lg p-2.5 text-sm text-[var(--color-text-primary)] focus:ring-2 focus:ring-indigo-500/50 outline-none"
                 />
               </div>
               <div>
@@ -260,7 +260,7 @@ export default function AgentsPage() {
                   placeholder="e.g. +91 9876543210"
                   value={newAgent.phone}
                   onChange={e => setNewAgent({...newAgent, phone: e.target.value})}
-                  className="w-full bg-white/5 border border-[var(--color-border)] rounded-lg p-2.5 text-sm text-white focus:ring-2 focus:ring-indigo-500/50 outline-none"
+                  className="w-full bg-[var(--color-surface-hover)] border border-[var(--color-border)] rounded-lg p-2.5 text-sm text-[var(--color-text-primary)] focus:ring-2 focus:ring-indigo-500/50 outline-none"
                 />
               </div>
               <div className="flex gap-3 pt-4">
@@ -277,11 +277,11 @@ export default function AgentsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
           <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl w-full max-w-2xl shadow-2xl animate-in zoom-in-95 duration-200 flex flex-col max-h-[90vh]">
             <div className="p-6 border-b border-[var(--color-border)] flex items-center justify-between">
-              <h2 className="text-lg font-bold text-white flex items-center gap-2">
+              <h2 className="text-lg font-bold text-[var(--color-text-primary)] flex items-center gap-2">
                 <ShieldCheck size={20} className="text-indigo-400" />
                 Agent Details
               </h2>
-              <button onClick={() => setSelectedAgentId(null)} className="text-[var(--color-text-muted)] hover:text-white">
+              <button onClick={() => setSelectedAgentId(null)} className="text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]">
                 <XCircle size={20} />
               </button>
             </div>
@@ -292,12 +292,12 @@ export default function AgentsPage() {
               ) : (
                 <>
                   {/* Info Header */}
-                  <div className="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5">
+                  <div className="flex items-center gap-4 bg-[var(--color-surface-hover)] p-4 rounded-xl border border-[var(--color-border)]">
                     <div className="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 font-bold text-xl">
                       {agentDetails.agent.name.charAt(0)}
                     </div>
                     <div>
-                      <h3 className="text-white font-bold text-lg">{agentDetails.agent.name}</h3>
+                      <h3 className="text-[var(--color-text-primary)] font-bold text-lg">{agentDetails.agent.name}</h3>
                       <p className="text-xs text-[var(--color-text-muted)]">{agentDetails.agent.agentId} • {agentDetails.agent.phone}</p>
                     </div>
                   </div>
@@ -311,14 +311,14 @@ export default function AgentsPage() {
                         className="bg-amber-950/20 border border-amber-900/30 p-4 rounded-xl cursor-pointer hover:bg-amber-900/20 hover:border-amber-500/50 transition-all group"
                       >
                         <div className="flex justify-between items-start mb-2">
-                          <p className="text-sm font-bold text-white group-hover:text-indigo-400 transition-colors">{agentDetails.currentOrder.orderId}</p>
+                          <p className="text-sm font-bold text-[var(--color-text-primary)] group-hover:text-indigo-400 transition-colors">{agentDetails.currentOrder.orderId}</p>
                           <span className="text-[10px] font-bold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded uppercase">In Transit</span>
                         </div>
                         <p className="text-xs text-[var(--color-text-secondary)]">To: {agentDetails.currentOrder.customer.name}</p>
                         <p className="text-xs text-[var(--color-text-muted)] truncate">{agentDetails.currentOrder.deliveryAddress.addressLine}, {agentDetails.currentOrder.deliveryAddress.city}</p>
                       </div>
                     ) : (
-                      <div className="bg-white/5 border border-white/5 p-4 rounded-xl text-center text-sm text-[var(--color-text-muted)]">
+                      <div className="bg-[var(--color-surface-hover)] border border-[var(--color-border)] p-4 rounded-xl text-center text-sm text-[var(--color-text-muted)]">
                         No active assignments
                       </div>
                     )}
@@ -328,17 +328,17 @@ export default function AgentsPage() {
                   <div>
                     <h4 className="text-xs font-bold text-[var(--color-text-muted)] uppercase tracking-wider mb-3">Recent Deliveries</h4>
                     {agentDetails.pastOrders.length === 0 ? (
-                      <div className="text-center text-sm text-[var(--color-text-muted)] bg-white/5 p-4 rounded-xl">No past deliveries found.</div>
+                      <div className="text-center text-sm text-[var(--color-text-muted)] bg-[var(--color-surface-hover)] p-4 rounded-xl">No past deliveries found.</div>
                     ) : (
                       <div className="space-y-2">
                         {agentDetails.pastOrders.map((o: any) => (
                           <div 
                             key={o._id} 
                             onClick={() => router.push(`/orders/${o._id}`)}
-                            className="flex items-center justify-between bg-white/5 p-3 rounded-lg border border-white/5 cursor-pointer hover:bg-indigo-500/10 hover:border-indigo-500/30 transition-all group"
+                            className="flex items-center justify-between bg-[var(--color-surface-hover)] p-3 rounded-lg border border-[var(--color-border)] cursor-pointer hover:bg-indigo-500/10 hover:border-indigo-500/30 transition-all group"
                           >
                             <div>
-                              <p className="text-xs font-bold text-white group-hover:text-indigo-400 transition-colors">{o.orderId}</p>
+                              <p className="text-xs font-bold text-[var(--color-text-primary)] group-hover:text-indigo-400 transition-colors">{o.orderId}</p>
                               <p className="text-[10px] text-[var(--color-text-muted)]">{o.deliveryAddress.city}</p>
                             </div>
                             <span className={`text-[10px] font-bold px-2 py-0.5 rounded uppercase ${o.status === 'Delivered' ? 'text-emerald-400 bg-emerald-400/10' : 'text-red-400 bg-red-400/10'}`}>

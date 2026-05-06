@@ -20,7 +20,7 @@ export default function AgentStats({ agents }: AgentStatsProps) {
     <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl overflow-hidden flex flex-col h-full shadow-xl">
       <div className="p-4 border-b border-[var(--color-border)] flex items-center gap-2">
         <Users size={18} className="text-indigo-400" />
-        <h3 className="text-sm font-bold text-white uppercase tracking-wider">Agent Performance</h3>
+        <h3 className="text-sm font-bold text-[var(--color-text-primary)] uppercase tracking-wider">Agent Performance</h3>
       </div>
 
       <div className="p-5 flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -31,10 +31,10 @@ export default function AgentStats({ agents }: AgentStatsProps) {
               <Award size={14} />
               <span className="text-[10px] font-bold uppercase tracking-wider">Top Performer</span>
             </div>
-            <p className="text-sm font-bold text-white truncate">{topAgent.name}</p>
+            <p className="text-sm font-bold text-[var(--color-text-primary)] truncate">{topAgent.name}</p>
           </div>
           <div className="mt-4 flex items-end justify-between">
-            <span className="text-2xl font-bold text-white">{topAgent.delivered}</span>
+            <span className="text-2xl font-bold text-[var(--color-text-primary)]">{topAgent.delivered}</span>
             <span className="text-xs text-emerald-500 mb-1">Deliveries</span>
           </div>
         </div>
@@ -46,10 +46,10 @@ export default function AgentStats({ agents }: AgentStatsProps) {
               <TrendingDown size={14} />
               <span className="text-[10px] font-bold uppercase tracking-wider">Critical Focus</span>
             </div>
-            <p className="text-sm font-bold text-white truncate">{mostDelayed.name}</p>
+            <p className="text-sm font-bold text-[var(--color-text-primary)] truncate">{mostDelayed.name}</p>
           </div>
           <div className="mt-4 flex items-end justify-between">
-            <span className="text-2xl font-bold text-white">{mostDelayed.delayed}</span>
+            <span className="text-2xl font-bold text-[var(--color-text-primary)]">{mostDelayed.delayed}</span>
             <span className="text-xs text-red-500 mb-1">Delays</span>
           </div>
         </div>
@@ -67,7 +67,7 @@ export default function AgentStats({ agents }: AgentStatsProps) {
              <tbody className="divide-y divide-[var(--color-border)]">
                {agents.slice(0, 5).map((a) => (
                  <tr key={a._id} className="group">
-                   <td className="py-2.5 text-white font-medium truncate max-w-[120px]">{a.name}</td>
+                   <td className="py-2.5 text-[var(--color-text-primary)] font-medium truncate max-w-[120px]">{a.name}</td>
                    <td className="py-2.5 text-right text-[var(--color-text-muted)]">{a.total}</td>
                    <td className="py-2.5 text-right font-bold text-red-400/80">{a.delayed}</td>
                  </tr>

@@ -37,7 +37,7 @@ function OrdersContent() {
             <Package size={24} />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-white">All Shipment Orders</h1>
+            <h1 className="text-2xl font-bold text-[var(--color-text-primary)]">All Shipment Orders</h1>
             <p className="text-[var(--color-text-secondary)] mt-1 text-sm">
               Manage and track your entire logistics pipeline
             </p>
@@ -87,7 +87,7 @@ function OrdersContent() {
         {pagination.totalPages > 1 && (
           <div className="px-5 py-4 border-t border-[var(--color-border)] flex items-center justify-between bg-[var(--color-surface-2)]/50">
             <p className="text-xs text-[var(--color-text-muted)]">
-              Showing <span className="text-white">{orders.length}</span> of <span className="text-white">{pagination.total}</span> orders
+              Showing <span className="text-[var(--color-text-primary)]">{orders.length}</span> of <span className="text-[var(--color-text-primary)]">{pagination.total}</span> orders
             </p>
             <div className="flex gap-2">
               <Button 

@@ -54,16 +54,16 @@ export default function DashboardPreview() {
       {/* Decorative background glow */}
       <div className="absolute -inset-4 bg-indigo-500/10 blur-2xl rounded-3xl -z-10" />
       
-      <div className="bg-[#111118]/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
+      <div className="bg-[#111118]/80 backdrop-blur-xl border border-[var(--color-border)] rounded-2xl shadow-2xl overflow-hidden">
         {/* Header */}
-        <div className="border-b border-white/5 bg-white/5 p-4 flex items-center justify-between">
+        <div className="border-b border-[var(--color-border)] bg-[var(--color-surface-hover)] p-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="flex gap-1">
               <div className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
               <div className="w-2.5 h-2.5 rounded-full bg-amber-500/50" />
               <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/50" />
             </div>
-            <span className="text-xs font-medium text-white/40 ml-2">Live Operations Overview</span>
+            <span className="text-xs font-medium text-[var(--color-text-primary)]/40 ml-2">Live Operations Overview</span>
           </div>
           <div className="flex gap-4">
             <div className="flex items-center gap-1.5 text-xs text-emerald-400">
@@ -83,8 +83,8 @@ export default function DashboardPreview() {
                 order.delayed 
                   ? 'bg-red-500/10 border-red-500/20' 
                   : highlightedId === order.id 
-                    ? 'bg-white/10 border-white/20' 
-                    : 'bg-white/5 border-white/5'
+                    ? 'bg-[var(--color-surface-hover)] border-[var(--color-border)]' 
+                    : 'bg-[var(--color-surface-hover)] border-[var(--color-border)]'
               }`}
             >
               <div className="flex items-center gap-3">
@@ -97,15 +97,15 @@ export default function DashboardPreview() {
                    order.status === 'Picked' ? <Package size={16} /> : <Clock size={16} />}
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-white">{order.orderId}</div>
-                  <div className="text-[10px] text-white/40">{order.customer}</div>
+                  <div className="text-sm font-semibold text-[var(--color-text-primary)]">{order.orderId}</div>
+                  <div className="text-[10px] text-[var(--color-text-primary)]/40">{order.customer}</div>
                 </div>
               </div>
 
               <div className="flex items-center gap-6">
                 <div className="text-right">
-                  <div className="text-[10px] uppercase tracking-wider text-white/40 font-bold mb-0.5">SLA</div>
-                  <div className={`text-xs font-mono ${order.delayed ? 'text-red-400 font-bold' : 'text-white/80'}`}>
+                  <div className="text-[10px] uppercase tracking-wider text-[var(--color-text-primary)]/40 font-bold mb-0.5">SLA</div>
+                  <div className={`text-xs font-mono ${order.delayed ? 'text-red-400 font-bold' : 'text-[var(--color-text-primary)]/80'}`}>
                     {order.sla}
                   </div>
                 </div>
@@ -121,7 +121,7 @@ export default function DashboardPreview() {
                         order.status === 'Delivered' ? 'bg-emerald-500/20 text-emerald-400' :
                         order.delayed ? 'bg-red-500/20 text-red-400 animate-pulse' :
                         order.status === 'In Transit' ? 'bg-indigo-500/20 text-indigo-400' :
-                        'bg-white/10 text-white/60'
+                        'bg-[var(--color-surface-hover)] text-[var(--color-text-primary)]/60'
                       }`}
                     >
                       {order.delayed ? 'SLA BREACH' : order.status.toUpperCase()}
@@ -134,18 +134,18 @@ export default function DashboardPreview() {
         </div>
 
         {/* Footer / Status Bar */}
-        <div className="bg-white/5 border-t border-white/5 p-3 px-5 flex items-center justify-between">
+        <div className="bg-[var(--color-surface-hover)] border-t border-[var(--color-border)] p-3 px-5 flex items-center justify-between">
           <div className="flex gap-4">
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-              <span className="text-[10px] text-white/40">On Track</span>
+              <span className="text-[10px] text-[var(--color-text-primary)]/40">On Track</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-              <span className="text-[10px] text-white/40">Delayed</span>
+              <span className="text-[10px] text-[var(--color-text-primary)]/40">Delayed</span>
             </div>
           </div>
-          <div className="text-[10px] text-white/20 italic">Updating in real-time...</div>
+          <div className="text-[10px] text-[var(--color-text-primary)]/20 italic">Updating in real-time...</div>
         </div>
       </div>
     </div>

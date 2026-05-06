@@ -69,7 +69,7 @@ export default function StatsCard({
               {title}
             </p>
             {loading ? (
-              <div className="h-9 w-16 bg-white/10 animate-pulse rounded-lg" />
+              <div className="h-9 w-16 bg-[var(--color-surface-hover)] animate-pulse rounded-lg" />
             ) : (
               <p className={`text-3xl font-bold ${styles.value}`}>
                 {value.toLocaleString()}

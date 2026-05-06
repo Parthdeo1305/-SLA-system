@@ -50,24 +50,24 @@ const FEATURES = [
 
 export default function Features() {
   return (
-    <section className="py-24 bg-[#0a0a0f] relative overflow-hidden">
+    <section className="py-24 bg-[var(--color-bg)] relative overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="max-w-2xl mb-20">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl lg:text-5xl font-bold text-white mb-6"
+            className="text-3xl lg:text-5xl font-bold text-[var(--color-text-primary)] mb-6"
           >
             Built for High-Velocity <br /> 
-            <span className="text-white/40">Logistics Teams.</span>
+            <span className="text-[var(--color-text-primary)]/40">Logistics Teams.</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg text-white/60 leading-relaxed"
+            className="text-lg text-[var(--color-text-primary)]/60 leading-relaxed"
           >
             We've stripped away the complexity of traditional WMS systems to focus 
             on what matters: getting shipments to customers on time, every time.
@@ -83,13 +83,13 @@ export default function Features() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
               whileHover={{ y: -8, transition: { duration: 0.2 } }}
-              className="p-8 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 transition-all group"
+              className="p-8 rounded-2xl bg-[var(--color-surface-hover)] border border-[var(--color-border)] hover:border-[var(--color-border)] hover:bg-[var(--color-surface-hover)] transition-all group"
             >
               <div className={`w-12 h-12 rounded-xl ${feature.bg} ${feature.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                 <feature.icon size={24} />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
-              <p className="text-white/60 text-sm leading-relaxed">
+              <h3 className="text-xl font-bold text-[var(--color-text-primary)] mb-3">{feature.title}</h3>
+              <p className="text-[var(--color-text-primary)]/60 text-sm leading-relaxed">
                 {feature.description}
               </p>
             </motion.div>

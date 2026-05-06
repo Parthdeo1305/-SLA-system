@@ -102,7 +102,7 @@ export default function UsersPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-2xl font-bold text-white flex items-center gap-2">
+          <h1 className="text-2xl font-bold text-[var(--color-text-primary)] flex items-center gap-2">
             <UsersIcon className="text-indigo-400" />
             User Management
           </h1>
@@ -116,7 +116,7 @@ export default function UsersPage() {
           <input
             type="text"
             placeholder="Search by name or email..."
-            className="w-full bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg pl-10 pr-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all"
+            className="w-full bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg pl-10 pr-4 py-2 text-sm text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -135,7 +135,7 @@ export default function UsersPage() {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-white/5 border-b border-[var(--color-border)]">
+              <tr className="bg-[var(--color-surface-hover)] border-b border-[var(--color-border)]">
                 <th className="px-6 py-4 text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">User</th>
                 <th className="px-6 py-4 text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Role</th>
                 <th className="px-6 py-4 text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Status</th>
@@ -161,7 +161,7 @@ export default function UsersPage() {
                 </tr>
               ) : (
                 users.map((u) => (
-                  <tr key={u._id} className="hover:bg-white/5 transition-colors group">
+                  <tr key={u._id} className="hover:bg-[var(--color-surface-hover)] transition-colors group">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
                         <div className={`w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm ${
@@ -170,7 +170,7 @@ export default function UsersPage() {
                           {u.name.charAt(0).toUpperCase()}
                         </div>
                         <div>
-                          <p className={`text-sm font-medium ${u.isActive ? 'text-white' : 'text-[var(--color-text-muted)] line-through'}`}>
+                          <p className={`text-sm font-medium ${u.isActive ? 'text-[var(--color-text-primary)]' : 'text-[var(--color-text-muted)] line-through'}`}>
                             {u.name} {u._id === currentUser.id && <span className="ml-1 text-[10px] bg-indigo-500/20 text-indigo-400 px-1.5 py-0.5 rounded border border-indigo-500/30 uppercase">You</span>}
                           </p>
                           <p className="text-xs text-[var(--color-text-muted)]">{u.email}</p>

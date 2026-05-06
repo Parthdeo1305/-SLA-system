@@ -42,16 +42,16 @@ export default function LoginPage() {
       <div className="hidden lg:flex lg:w-1/2 flex-col justify-between p-12 bg-gradient-to-br from-indigo-950 via-[#0e0e1a] to-[var(--color-bg)] border-r border-[var(--color-border)]">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center">
-            <Truck size={20} className="text-white" />
+            <Truck size={20} className="text-[var(--color-text-primary)]" />
           </div>
           <div>
-            <p className="font-bold text-white text-lg leading-none">ShipTrack</p>
+            <p className="font-bold text-[var(--color-text-primary)] text-lg leading-none">ShipTrack</p>
             <p className="text-xs text-indigo-400">Logistics Platform</p>
           </div>
         </div>
 
         <div>
-          <h1 className="text-4xl font-bold text-white leading-tight mb-4">
+          <h1 className="text-4xl font-bold text-[var(--color-text-primary)] leading-tight mb-4">
             Operational visibility<br />
             <span className="text-indigo-400">in real time.</span>
           </h1>
@@ -67,8 +67,8 @@ export default function LoginPage() {
               { label: 'Role-Based Access', desc: 'Secure team management' },
               { label: 'Order Timeline', desc: 'Full audit history' },
             ].map((f) => (
-              <div key={f.label} className="p-4 rounded-xl bg-white/5 border border-white/10">
-                <p className="text-sm font-semibold text-white">{f.label}</p>
+              <div key={f.label} className="p-4 rounded-xl bg-[var(--color-surface-hover)] border border-[var(--color-border)]">
+                <p className="text-sm font-semibold text-[var(--color-text-primary)]">{f.label}</p>
                 <p className="text-xs text-[var(--color-text-muted)] mt-1">{f.desc}</p>
               </div>
             ))}
@@ -86,12 +86,12 @@ export default function LoginPage() {
           {/* Mobile logo */}
           <div className="flex items-center gap-3 mb-10 lg:hidden">
             <div className="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center">
-              <Truck size={18} className="text-white" />
+              <Truck size={18} className="text-[var(--color-text-primary)]" />
             </div>
-            <p className="font-bold text-white text-xl">ShipTrack</p>
+            <p className="font-bold text-[var(--color-text-primary)] text-xl">ShipTrack</p>
           </div>
 
-          <h2 className="text-2xl font-bold text-white mb-1">Welcome back</h2>
+          <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-1">Welcome back</h2>
           <p className="text-[var(--color-text-secondary)] mb-8">
             Sign in to your operations dashboard
           </p>
@@ -144,7 +144,7 @@ export default function LoginPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-text-muted)] hover:text-white transition-colors p-1"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors p-1"
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>

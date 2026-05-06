@@ -12,7 +12,7 @@ export default function CriticalPanel({ shipments }: CriticalPanelProps) {
       <div className="p-4 border-b border-[var(--color-border)] flex items-center justify-between bg-red-950/10">
         <div className="flex items-center gap-2">
           <AlertCircle size={18} className="text-red-500" />
-          <h3 className="text-sm font-bold text-white uppercase tracking-wider">Critical Shipments</h3>
+          <h3 className="text-sm font-bold text-[var(--color-text-primary)] uppercase tracking-wider">Critical Shipments</h3>
         </div>
         <span className="text-[10px] bg-red-500/20 text-red-400 px-2 py-0.5 rounded-full font-bold uppercase">Immediate Action</span>
       </div>
@@ -27,10 +27,10 @@ export default function CriticalPanel({ shipments }: CriticalPanelProps) {
             <Link 
               key={s._id} 
               href={`/orders/${s._id}`}
-              className="block p-4 hover:bg-white/5 transition-all group"
+              className="block p-4 hover:bg-[var(--color-surface-hover)] transition-all group"
             >
               <div className="flex justify-between items-start mb-2">
-                <span className="text-sm font-mono font-bold text-white group-hover:text-indigo-400 transition-colors">
+                <span className="text-sm font-mono font-bold text-[var(--color-text-primary)] group-hover:text-indigo-400 transition-colors">
                   {s.orderId}
                 </span>
                 <SLAIndicator deadline={s.promisedDeliveryTime} />
@@ -61,7 +61,7 @@ export default function CriticalPanel({ shipments }: CriticalPanelProps) {
       
       <Link 
         href="/orders?delayed=true" 
-        className="p-3 text-center text-xs font-semibold text-[var(--color-text-muted)] hover:text-white hover:bg-white/5 transition-all border-t border-[var(--color-border)]"
+        className="p-3 text-center text-xs font-semibold text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-hover)] transition-all border-t border-[var(--color-border)]"
       >
         View All Delayed
       </Link>

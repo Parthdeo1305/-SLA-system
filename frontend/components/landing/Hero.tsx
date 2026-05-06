@@ -37,46 +37,46 @@ export default function Hero() {
           animate="show"
           className="max-w-2xl"
         >
-          <motion.div variants={item} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-indigo-400 text-xs font-bold uppercase tracking-widest mb-6">
+          <motion.div variants={item} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--color-surface-hover)] border border-[var(--color-border)] text-indigo-400 text-xs font-bold uppercase tracking-widest mb-6">
             <Zap size={12} className="fill-current" />
             <span>Next-Gen Logistics Engine</span>
           </motion.div>
           
-          <motion.h1 variants={item} className="text-5xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
+          <motion.h1 variants={item} className="text-5xl lg:text-7xl font-extrabold text-[var(--color-text-primary)] leading-tight mb-6">
             Real-Time Visibility <br /> 
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-400">
               Zero SLA Breaches.
             </span>
           </motion.h1>
           
-          <motion.p variants={item} className="text-lg text-white/60 mb-10 leading-relaxed max-w-lg">
+          <motion.p variants={item} className="text-lg text-[var(--color-text-primary)]/60 mb-10 leading-relaxed max-w-lg">
             Stop reacting to delays. ShipTrack empowers operations teams with predictive tracking, 
             instant breach detection, and an intelligent dashboard designed for mission-critical logistics.
           </motion.p>
           
           <motion.div variants={item} className="flex flex-col sm:flex-row items-center gap-4">
-            <Link href="/signup" className="w-full sm:w-auto bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-indigo-500 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-indigo-500/20">
+            <Link href="/signup" className="w-full sm:w-auto bg-indigo-600 text-[var(--color-text-primary)] px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-indigo-500 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-indigo-500/20">
               <span>Start Free Trial</span>
               <ArrowRight size={18} />
             </Link>
             
-            <Link href="/login" className="w-full sm:w-auto bg-white/5 text-white border border-white/10 px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-white/10 transition-all hover:scale-105 active:scale-95">
+            <Link href="/login" className="w-full sm:w-auto bg-[var(--color-surface-hover)] text-[var(--color-text-primary)] border border-[var(--color-border)] px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[var(--color-surface-hover)] transition-all hover:scale-105 active:scale-95">
               <span>Book a Demo</span>
             </Link>
           </motion.div>
 
-          <motion.div variants={item} className="mt-12 flex items-center gap-8 border-t border-white/5 pt-12">
+          <motion.div variants={item} className="mt-12 flex items-center gap-8 border-t border-[var(--color-border)] pt-12">
             <div className="flex flex-col gap-1">
-              <span className="text-2xl font-bold text-white">500+</span>
-              <span className="text-xs text-white/40 font-medium uppercase tracking-wider">Fleet Partners</span>
+              <span className="text-2xl font-bold text-[var(--color-text-primary)]">500+</span>
+              <span className="text-xs text-[var(--color-text-primary)]/40 font-medium uppercase tracking-wider">Fleet Partners</span>
             </div>
-            <div className="w-px h-10 bg-white/5" />
+            <div className="w-px h-10 bg-[var(--color-surface-hover)]" />
             <div className="flex flex-col gap-1">
-              <span className="text-2xl font-bold text-white">99.9%</span>
-              <span className="text-xs text-white/40 font-medium uppercase tracking-wider">Uptime SLA</span>
+              <span className="text-2xl font-bold text-[var(--color-text-primary)]">99.9%</span>
+              <span className="text-xs text-[var(--color-text-primary)]/40 font-medium uppercase tracking-wider">Uptime SLA</span>
             </div>
-            <div className="w-px h-10 bg-white/5" />
-            <div className="flex items-center gap-3 text-white/60">
+            <div className="w-px h-10 bg-[var(--color-surface-hover)]" />
+            <div className="flex items-center gap-3 text-[var(--color-text-primary)]/60">
               <ShieldCheck size={24} className="text-emerald-500" />
               <span className="text-xs font-medium leading-tight">ISO 27001 <br /> Certified</span>
             </div>

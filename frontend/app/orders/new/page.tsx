@@ -115,7 +115,7 @@ export default function NewOrderPage() {
         </Link>
         <div className="h-5 w-px bg-[var(--color-border)]" />
         <div>
-          <h1 className="text-xl font-bold text-white">Create New Order</h1>
+          <h1 className="text-xl font-bold text-[var(--color-text-primary)]">Create New Order</h1>
           <p className="text-xs text-[var(--color-text-muted)] mt-0.5">
             Order ID will be auto-assigned
           </p>

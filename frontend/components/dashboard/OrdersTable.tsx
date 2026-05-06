@@ -65,8 +65,8 @@ export default function OrdersTable({ orders, loading }: OrdersTableProps) {
               tabIndex={0}
               className={`
                 group cursor-pointer transition-all duration-200 outline-none
-                hover:bg-white/5 hover:shadow-lg hover:shadow-black/20
-                focus:bg-white/5 focus:ring-2 focus:ring-inset focus:ring-indigo-500/50
+                hover:bg-[var(--color-surface-hover)] hover:shadow-lg hover:shadow-black/20
+                focus:bg-[var(--color-surface-hover)] focus:ring-2 focus:ring-inset focus:ring-indigo-500/50
                 ${order.isDelayed ? 'bg-red-950/10' : ''}
               `}
             >
@@ -108,7 +108,7 @@ export default function OrdersTable({ orders, loading }: OrdersTableProps) {
               <td className="px-4 py-4">
                 {order.deliveryAgent?.name ? (
                   <div className="flex flex-col">
-                    <p className="text-sm font-medium text-white">{order.deliveryAgent.name}</p>
+                    <p className="text-sm font-medium text-[var(--color-text-primary)]">{order.deliveryAgent.name}</p>
                     <p className="text-[10px] text-[var(--color-text-muted)] font-mono">
                       {order.deliveryAgent.phone || 'No phone'}
                     </p>
@@ -146,7 +146,7 @@ export default function OrdersTable({ orders, loading }: OrdersTableProps) {
               <td className="px-4 py-4 text-right">
                 <ChevronRight 
                   size={18} 
-                  className="inline-block text-[var(--color-text-muted)] group-hover:text-white group-hover:translate-x-1 transition-all duration-300" 
+                  className="inline-block text-[var(--color-text-muted)] group-hover:text-[var(--color-text-primary)] group-hover:translate-x-1 transition-all duration-300" 
                 />
               </td>
             </tr>

@@ -168,7 +168,7 @@ export default function OrderDetailPage() {
           <div className="h-5 w-px bg-[var(--color-border)]" />
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-xl font-bold text-white">Order Detail</h1>
+              <h1 className="text-xl font-bold text-[var(--color-text-primary)]">Order Detail</h1>
               <span className="font-mono text-sm text-indigo-400 bg-indigo-950/40 px-2 py-0.5 rounded">
                 {order.orderId}
               </span>
@@ -203,7 +203,7 @@ export default function OrderDetailPage() {
 
       {/* Status Timeline */}
       <Card className="p-5">
-        <p className="text-sm font-semibold text-white mb-5">Status Timeline</p>
+        <p className="text-sm font-semibold text-[var(--color-text-primary)] mb-5">Status Timeline</p>
         <div className="flex items-center gap-0 relative">
           {STATUS_FLOW.map((s, i) => {
             const isDone = i <= currentStep && order.status !== 'Failed';
@@ -217,7 +217,7 @@ export default function OrderDetailPage() {
                     className={`
                       w-8 h-8 rounded-full flex items-center justify-center border-2 flex-shrink-0
                       transition-all duration-300
-                      ${isDone ? 'bg-indigo-600 border-indigo-500 text-white' : 'bg-[var(--color-surface-3)] border-[var(--color-border)] text-[var(--color-text-muted)]'}
+                      ${isDone ? 'bg-indigo-600 border-indigo-500 text-[var(--color-text-primary)]' : 'bg-[var(--color-surface-3)] border-[var(--color-border)] text-[var(--color-text-muted)]'}
                       ${isCurrent ? 'ring-2 ring-indigo-500/30 ring-offset-2 ring-offset-[var(--color-surface-2)]' : ''}
                     `}
                   >
@@ -251,7 +251,7 @@ export default function OrderDetailPage() {
       {/* Details */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card className="p-5 space-y-4">
-          <p className="text-sm font-semibold text-white">Order Information</p>
+          <p className="text-sm font-semibold text-[var(--color-text-primary)]">Order Information</p>
           <div className="space-y-3">
             {[
               { icon: <User size={14} />, label: 'Customer', value: order.customer?.name || 'Unknown' },
@@ -301,7 +301,7 @@ export default function OrderDetailPage() {
         </Card>
 
         <Card className="p-5">
-          <p className="text-sm font-semibold text-white mb-4">Notes</p>
+          <p className="text-sm font-semibold text-[var(--color-text-primary)] mb-4">Notes</p>
           {order.notes ? (
             <div className="flex gap-2">
               <FileText size={14} className="text-[var(--color-text-muted)] mt-0.5 flex-shrink-0" />
@@ -317,7 +317,7 @@ export default function OrderDetailPage() {
         {/* Route Details */}
         {order.pickupAddress?.addressLine && (
           <Card className="p-5 md:col-span-2">
-            <p className="text-sm font-semibold text-white mb-6">Route Information</p>
+            <p className="text-sm font-semibold text-[var(--color-text-primary)] mb-6">Route Information</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
               {/* Connector Line */}
               <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0.5 h-full bg-gradient-to-b from-indigo-500/20 via-indigo-500/20 to-transparent" />
@@ -329,7 +329,7 @@ export default function OrderDetailPage() {
                   Pickup (Origin)
                 </div>
                 <div>
-                  <p className="text-sm text-white font-medium">{order.pickupAddress.addressLine}</p>
+                  <p className="text-sm text-[var(--color-text-primary)] font-medium">{order.pickupAddress.addressLine}</p>
                   <p className="text-xs text-[var(--color-text-muted)] mt-1">
                     {order.pickupAddress.city}, {order.pickupAddress.pincode}
                   </p>
@@ -343,7 +343,7 @@ export default function OrderDetailPage() {
                   Delivery (Destination)
                 </div>
                 <div>
-                  <p className="text-sm text-white font-medium">{order.deliveryAddress.addressLine}</p>
+                  <p className="text-sm text-[var(--color-text-primary)] font-medium">{order.deliveryAddress.addressLine}</p>
                   <p className="text-xs text-[var(--color-text-muted)] mt-1">
                     {order.deliveryAddress.city}, {order.deliveryAddress.pincode}
                   </p>
@@ -355,7 +355,7 @@ export default function OrderDetailPage() {
 
         {order.deliveryAgent?.agentId && (
           <Card className="p-5 space-y-4 md:col-span-2">
-            <p className="text-sm font-semibold text-white">Assigned Delivery Agent</p>
+            <p className="text-sm font-semibold text-[var(--color-text-primary)]">Assigned Delivery Agent</p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {[
                 { label: 'Agent Name', value: order.deliveryAgent.name },
@@ -364,7 +364,7 @@ export default function OrderDetailPage() {
               ].map((item) => (
                 <div key={item.label}>
                   <p className="text-xs text-[var(--color-text-muted)] mb-1">{item.label}</p>
-                  <p className={`text-sm font-medium text-white ${item.mono ? 'font-mono' : ''}`}>
+                  <p className={`text-sm font-medium text-[var(--color-text-primary)] ${item.mono ? 'font-mono' : ''}`}>
                     {item.value}
                   </p>
                 </div>
@@ -377,7 +377,7 @@ export default function OrderDetailPage() {
       {/* ── Transit History Timeline ────────────────────────────────────── */}
       {order.transitLogs && order.transitLogs.length > 0 && (
         <Card className="p-6">
-          <h2 className="text-sm font-bold text-white mb-6 uppercase tracking-wider">Operational Audit Trail</h2>
+          <h2 className="text-sm font-bold text-[var(--color-text-primary)] mb-6 uppercase tracking-wider">Operational Audit Trail</h2>
           <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-indigo-600 before:via-indigo-600/50 before:to-transparent">
             {order.transitLogs.slice().reverse().map((log, idx) => (
               <div key={idx} className="relative flex items-start gap-6 group">
@@ -385,13 +385,13 @@ export default function OrderDetailPage() {
                   relative z-10 w-10 h-10 rounded-xl border flex items-center justify-center flex-shrink-0
                   ${idx === 0 ? 'bg-indigo-600 border-indigo-500 shadow-lg shadow-indigo-600/20' : 'bg-[var(--color-surface-3)] border-[var(--color-border)]'}
                 `}>
-                  <span className={idx === 0 ? 'text-white' : 'text-[var(--color-text-muted)]'}>
+                  <span className={idx === 0 ? 'text-[var(--color-text-primary)]' : 'text-[var(--color-text-muted)]'}>
                     {STATUS_ICONS[log.status]}
                   </span>
                 </div>
                 <div className="flex-1 pt-0.5">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
-                    <p className={`text-sm font-bold ${idx === 0 ? 'text-white' : 'text-[var(--color-text-secondary)]'}`}>
+                    <p className={`text-sm font-bold ${idx === 0 ? 'text-[var(--color-text-primary)]' : 'text-[var(--color-text-secondary)]'}`}>
                       Shipment {log.status}
                     </p>
                     <time className="text-[10px] font-mono text-[var(--color-text-muted)] uppercase">
@@ -400,7 +400,7 @@ export default function OrderDetailPage() {
                   </div>
                   
                   {(log.location || log.note) && (
-                    <div className="bg-white/3 border border-white/5 rounded-xl p-3 space-y-2">
+                    <div className="bg-[var(--color-surface-hover)] border border-[var(--color-border)] rounded-xl p-3 space-y-2">
                       {log.location && (
                         <p className="text-xs text-indigo-400 font-medium">
                           📍 {log.location}
@@ -415,7 +415,7 @@ export default function OrderDetailPage() {
                   )}
                   
                   <p className="text-[10px] text-[var(--color-text-muted)] mt-2 uppercase tracking-tight">
-                    Verified by OpID: <span className="text-white/40">{log.updatedBy}</span>
+                    Verified by OpID: <span className="text-[var(--color-text-primary)]/40">{log.updatedBy}</span>
                   </p>
                 </div>
               </div>
@@ -427,7 +427,7 @@ export default function OrderDetailPage() {
       {/* Actions */}
       {(nextStatus || canFail) && (
         <Card className="p-6 border-indigo-500/20 bg-indigo-500/5">
-          <p className="text-sm font-bold text-white mb-1">Operational Update</p>
+          <p className="text-sm font-bold text-[var(--color-text-primary)] mb-1">Operational Update</p>
           <p className="text-xs text-[var(--color-text-muted)] mb-6">
             Advance the shipment lifecycle. All updates are logged for accountability.
           </p>
@@ -462,7 +462,7 @@ export default function OrderDetailPage() {
           ) : (
             <div className="space-y-6 bg-[var(--color-surface-2)] p-6 rounded-2xl border border-[var(--color-border)]">
               <div className="flex items-center justify-between">
-                <h3 className="font-bold text-white flex items-center gap-2">
+                <h3 className="font-bold text-[var(--color-text-primary)] flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-indigo-500" />
                   Updating to {pendingStatus}
                 </h3>
@@ -476,7 +476,7 @@ export default function OrderDetailPage() {
                       Select Available Agent
                     </label>
                     <select
-                      className="w-full bg-[var(--color-surface-3)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 appearance-none"
+                      className="w-full bg-[var(--color-surface-3)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-sm text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-indigo-500/50 appearance-none"
                       value={selectedAgentId}
                       onChange={(e) => setSelectedAgentId(e.target.value)}
                     >
@@ -502,7 +502,7 @@ export default function OrderDetailPage() {
                       <input
                         type="text"
                         placeholder="e.g. Pune Sorting Facility"
-                        className="w-full bg-[var(--color-surface-3)] border border-[var(--color-border)] rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
+                        className="w-full bg-[var(--color-surface-3)] border border-[var(--color-border)] rounded-xl px-4 py-2.5 text-sm text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
                         value={transitInfo.location}
                         onChange={(e) => setTransitInfo({ ...transitInfo, location: e.target.value })}
                       />
@@ -516,7 +516,7 @@ export default function OrderDetailPage() {
                     <textarea
                       placeholder="Enter update details..."
                       rows={2}
-                      className="w-full bg-[var(--color-surface-3)] border border-[var(--color-border)] rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 resize-none"
+                      className="w-full bg-[var(--color-surface-3)] border border-[var(--color-border)] rounded-xl px-4 py-2.5 text-sm text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-indigo-500/50 resize-none"
                       value={transitInfo.note}
                       onChange={(e) => setTransitInfo({ ...transitInfo, note: e.target.value })}
                     />
@@ -534,7 +534,7 @@ export default function OrderDetailPage() {
                       <div className="space-y-2">
                         <label className="text-xs font-semibold text-[var(--color-text-muted)] uppercase">Primary Reason</label>
                         <select
-                          className="w-full bg-[var(--color-surface-3)] border border-[var(--color-border)] rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
+                          className="w-full bg-[var(--color-surface-3)] border border-[var(--color-border)] rounded-xl px-4 py-2.5 text-sm text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
                           value={delayInfo.reason}
                           onChange={(e) => setDelayInfo({ ...delayInfo, reason: e.target.value })}
                         >
@@ -547,7 +547,7 @@ export default function OrderDetailPage() {
                         <input
                           type="text"
                           placeholder="Short explanation..."
-                          className="w-full bg-[var(--color-surface-3)] border border-[var(--color-border)] rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
+                          className="w-full bg-[var(--color-surface-3)] border border-[var(--color-border)] rounded-xl px-4 py-2.5 text-sm text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
                           value={delayInfo.note}
                           onChange={(e) => setDelayInfo({ ...delayInfo, note: e.target.value })}
                         />

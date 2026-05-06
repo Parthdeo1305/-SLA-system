@@ -88,7 +88,7 @@ export default function DashboardPage() {
           >
             <p className="text-red-400 text-xs font-bold uppercase tracking-[0.2em] mb-2">SLA Breached</p>
             <div className="flex items-baseline gap-3">
-              <h2 className="text-7xl font-black text-white leading-none">
+              <h2 className="text-7xl font-black text-[var(--color-text-primary)] leading-none">
                 {statsLoading ? '...' : stats?.delayed ?? 0}
               </h2>
               <span className="text-red-400/50 text-sm font-medium">Orders</span>
@@ -99,7 +99,7 @@ export default function DashboardPage() {
           {/* Top 3 Critical Shipments */}
           <div className="flex-1 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-6 shadow-xl relative overflow-hidden flex flex-col">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
+              <h3 className="text-xs font-bold text-[var(--color-text-primary)] uppercase tracking-wider flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
                 Critical Escalations
               </h3>
@@ -108,15 +108,15 @@ export default function DashboardPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 flex-1">
               {statsLoading ? (
-                [1, 2, 3].map(i => <div key={i} className="h-full bg-white/5 rounded-xl animate-pulse" />)
+                [1, 2, 3].map(i => <div key={i} className="h-full bg-[var(--color-surface-hover)] rounded-xl animate-pulse" />)
               ) : (analytics?.criticalShipments ?? []).slice(0, 3).length === 0 ? (
                 <div className="col-span-3 flex items-center justify-center text-[var(--color-text-muted)] text-sm italic bg-white/2 rounded-xl">No critical shipments detected.</div>
               ) : (
                 (analytics?.criticalShipments ?? []).slice(0, 3).map((s: any) => (
-                  <Link key={s._id} href={`/orders/${s._id}`} className="block p-4 rounded-xl bg-white/5 border border-white/5 hover:border-indigo-500/30 transition-all group flex flex-col justify-between">
+                  <Link key={s._id} href={`/orders/${s._id}`} className="block p-4 rounded-xl bg-[var(--color-surface-hover)] border border-[var(--color-border)] hover:border-indigo-500/30 transition-all group flex flex-col justify-between">
                     <div>
                       <p className="text-[10px] font-mono font-bold text-indigo-400 mb-1">{s.orderId}</p>
-                      <p className="text-sm font-bold text-white truncate">{s.deliveryAddress?.city || 'Unknown'}</p>
+                      <p className="text-sm font-bold text-[var(--color-text-primary)] truncate">{s.deliveryAddress?.city || 'Unknown'}</p>
                     </div>
                     <div className="flex items-center justify-between mt-4">
                       <span className="text-[10px] font-bold text-red-400 bg-red-400/10 px-2 py-0.5 rounded border border-red-400/20">BREACHED</span>
@@ -185,7 +185,7 @@ export default function DashboardPage() {
       {/* ── LAYER 3: LIVE DATA FEED & FILTERS ────────────────────────────── */}
       <section className="space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <h2 className="text-lg font-bold text-white flex items-center gap-2">
+          <h2 className="text-lg font-bold text-[var(--color-text-primary)] flex items-center gap-2">
             <LayoutDashboard size={20} className="text-indigo-400" />
             Live Operations Feed
             <button
@@ -220,7 +220,7 @@ export default function DashboardPage() {
           onClick={() => setShowInsights(!showInsights)}
           className="flex items-center gap-3 text-xs font-bold text-[var(--color-text-muted)] uppercase tracking-[0.2em] hover:text-indigo-400 transition-all group"
         >
-          <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-indigo-500/10 transition-all">
+          <div className="w-8 h-8 rounded-lg bg-[var(--color-surface-hover)] flex items-center justify-center group-hover:bg-indigo-500/10 transition-all">
             <ChevronRight size={16} className={`transition-transform duration-300 ${showInsights ? 'rotate-90 text-indigo-400' : ''}`} />
           </div>
           {showInsights ? 'Hide Advanced Analytics & Activity' : 'Show Advanced Analytics & Activity'}

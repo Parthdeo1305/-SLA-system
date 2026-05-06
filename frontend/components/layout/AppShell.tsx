@@ -13,8 +13,11 @@ import {
   ShieldCheck,
   Briefcase,
   Warehouse,
+  Sun,
+  Moon,
 } from 'lucide-react';
 import Link from 'next/link';
+import { useTheme } from '@/hooks/useTheme';
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 import {
@@ -48,6 +51,7 @@ function RoleIcon({ role }: { role: string }) {
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const { user, logout } = useAuth();
   const pathname = usePathname();
+  const { theme, toggleTheme } = useTheme();
 
   const navItems = [
     {
@@ -101,15 +105,22 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     <div className="flex h-screen overflow-hidden bg-[var(--color-bg)]">
       {/* ── Sidebar ─────────────────────────────────────────────────────── */}
       <aside className="w-64 flex-shrink-0 flex flex-col border-r border-[var(--color-border)] bg-[var(--color-surface)]">
-        {/* Logo */}
-        <div className="flex items-center gap-3 px-6 py-5 border-b border-[var(--color-border)]">
-          <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center">
-            <Truck size={16} className="text-white" />
+        <div className="flex items-center justify-between px-6 py-5 border-b border-[var(--color-border)]">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center">
+              <Truck size={16} className="text-[var(--color-text-primary)]" />
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-[var(--color-text-primary)] leading-none">ShipTrack</p>
+              <p className="text-xs text-[var(--color-text-muted)] mt-0.5">Logistics Platform</p>
+            </div>
           </div>
-          <div>
-            <p className="text-sm font-semibold text-white leading-none">ShipTrack</p>
-            <p className="text-xs text-[var(--color-text-muted)] mt-0.5">Logistics Platform</p>
-          </div>
+          <button 
+            onClick={toggleTheme}
+            className="p-1.5 rounded-lg hover:bg-[var(--color-surface-hover)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+          >
+            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
         </div>
 
         {/* Nav */}
@@ -129,7 +140,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                   ${
                     isActive
                       ? 'bg-indigo-600/15 text-indigo-400 border border-indigo-600/20'
-                      : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-white/5'
+                      : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-hover)]'
                   }
                 `}
               >
@@ -153,7 +164,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 </span>
               </div>
               <div className="min-w-0">
-                <p className="text-sm font-medium text-white truncate">{user.name}</p>
+                <p className="text-sm font-medium text-[var(--color-text-primary)] truncate">{user.name}</p>
                 {/* Role badge */}
                 <span
                   className={`inline-flex items-center gap-1 mt-0.5 px-1.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider border ${roleBadgeClass(user.role)}`}

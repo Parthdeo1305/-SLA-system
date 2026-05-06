@@ -63,12 +63,12 @@ export default function SignupPage() {
         {/* Logo */}
         <div className="flex items-center gap-3 mb-10">
           <div className="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center">
-            <Truck size={18} className="text-white" />
+            <Truck size={18} className="text-[var(--color-text-primary)]" />
           </div>
-          <p className="font-bold text-white text-xl">ShipTrack</p>
+          <p className="font-bold text-[var(--color-text-primary)] text-xl">ShipTrack</p>
         </div>
 
-        <h2 className="text-2xl font-bold text-white mb-1">Create your account</h2>
+        <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-1">Create your account</h2>
         <p className="text-[var(--color-text-secondary)] mb-8">
           Join your team on the operations dashboard
         </p>

@@ -9,13 +9,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const VARIANT_STYLES = {
   primary:
-    'bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm hover:shadow-indigo-500/20 hover:shadow-md',
+    'bg-indigo-600 hover:bg-indigo-500 text-[var(--color-text-primary)] shadow-sm hover:shadow-indigo-500/20 hover:shadow-md',
   secondary:
     'bg-[var(--color-surface-3)] hover:bg-[var(--color-border-hover)] text-[var(--color-text-primary)] border border-[var(--color-border)]',
   danger:
     'bg-red-900/50 hover:bg-red-900 text-red-400 border border-red-900 hover:text-red-300',
   ghost:
-    'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-white/5',
+    'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-hover)]',
 };
 
 const SIZE_STYLES = {

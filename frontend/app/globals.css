@@ -14,24 +14,46 @@
   --color-info: #3b82f6;
   --color-neutral: #6b7280;
 
-  /* Surface */
-  --color-bg: #0a0a0f;
-  --color-surface: #111118;
-  --color-surface-2: #18181f;
-  --color-surface-3: #1e1e28;
+  /* Surface (Dark Mode - Default) */
+  --color-bg: #040914; /* Deep premium blue-black */
+  --color-surface: #0b1120; /* Elevated card */
+  --color-surface-2: #121b2d; /* Hovered cards */
+  --color-surface-3: #1e293b; /* Input backgrounds */
+  --color-surface-hover: rgba(255, 255, 255, 0.05);
   --color-border: rgba(255, 255, 255, 0.08);
   --color-border-hover: rgba(255, 255, 255, 0.16);
 
-  /* Text */
-  --color-text-primary: #f1f1f5;
-  --color-text-secondary: #9ca3af;
-  --color-text-muted: #6b7280;
+  /* Text (Dark Mode) */
+  --color-text-primary: #f8fafc; /* Crisp white */
+  --color-text-secondary: #94a3b8; /* Soft slate */
+  --color-text-muted: #64748b; /* Deeper slate */
 
   /* Effects */
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.4), 0 4px 16px rgba(0,0,0,0.2);
-  --shadow-card-hover: 0 4px 24px rgba(0,0,0,0.5);
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.16);
+  --shadow-card-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
   --shadow-glow-primary: 0 0 20px rgba(99,102,241,0.25);
   --radius: 12px;
+}
+
+html.light {
+  /* Surface (Light Mode) */
+  --color-bg: #f8fafc; /* Clean slate-50 */
+  --color-surface: #ffffff; /* Pure white cards */
+  --color-surface-2: #f1f5f9; /* Slate 100 for hover */
+  --color-surface-3: #e2e8f0; /* Inputs */
+  --color-surface-hover: rgba(0, 0, 0, 0.04);
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border-hover: rgba(0, 0, 0, 0.16);
+
+  /* Text (Light Mode) */
+  --color-text-primary: #0f172a; /* Slate 900 */
+  --color-text-secondary: #475569; /* Slate 600 */
+  --color-text-muted: #94a3b8; /* Slate 400 */
+
+  /* Effects */
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-card-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-glow-primary: 0 0 20px rgba(99,102,241,0.15);
 }
 
 * {

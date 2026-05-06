@@ -26,17 +26,17 @@ const STEPS = [
 
 export default function HowItWorks() {
   return (
-    <section className="py-24 bg-[#0a0a0f] border-y border-white/5">
+    <section className="py-24 bg-[var(--color-bg)] border-y border-[var(--color-border)]">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl lg:text-5xl font-bold text-white mb-6"
+            className="text-3xl lg:text-5xl font-bold text-[var(--color-text-primary)] mb-6"
           >
             Streamlined <br /> 
-            <span className="text-white/40">From Order to Delivery.</span>
+            <span className="text-[var(--color-text-primary)]/40">From Order to Delivery.</span>
           </motion.h2>
         </div>
 
@@ -52,9 +52,9 @@ export default function HowItWorks() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.2, duration: 0.6 }}
-                className="relative bg-white/5 border border-white/5 rounded-3xl p-10 flex flex-col items-center text-center group"
+                className="relative bg-[var(--color-surface-hover)] border border-[var(--color-border)] rounded-3xl p-10 flex flex-col items-center text-center group"
               >
-                <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-[#111118] border border-white/10 flex items-center justify-center text-indigo-400 font-bold text-sm z-10 group-hover:border-indigo-500/50 transition-colors">
+                <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-[#111118] border border-[var(--color-border)] flex items-center justify-center text-indigo-400 font-bold text-sm z-10 group-hover:border-indigo-500/50 transition-colors">
                   {step.step}
                 </div>
                 
@@ -62,14 +62,14 @@ export default function HowItWorks() {
                   <step.icon size={32} />
                 </div>
                 
-                <h3 className="text-2xl font-bold text-white mb-4">{step.title}</h3>
-                <p className="text-white/60 leading-relaxed">
+                <h3 className="text-2xl font-bold text-[var(--color-text-primary)] mb-4">{step.title}</h3>
+                <p className="text-[var(--color-text-primary)]/60 leading-relaxed">
                   {step.description}
                 </p>
 
                 {/* Arrow (Desktop) */}
                 {idx < 2 && (
-                  <div className="hidden lg:flex absolute -right-6 top-1/2 -translate-y-1/2 w-12 h-12 items-center justify-center text-white/10 z-20">
+                  <div className="hidden lg:flex absolute -right-6 top-1/2 -translate-y-1/2 w-12 h-12 items-center justify-center text-[var(--color-text-primary)]/10 z-20">
                     <motion.div
                       animate={{ x: [0, 5, 0] }}
                       transition={{ duration: 2, repeat: Infinity }}

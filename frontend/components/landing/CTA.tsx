@@ -20,19 +20,19 @@ export default function CTA() {
           className="max-w-5xl mx-auto rounded-[2rem] bg-gradient-to-br from-indigo-600 to-blue-700 p-12 lg:p-20 text-center relative overflow-hidden shadow-2xl shadow-indigo-600/20"
         >
           {/* Decorative Sparkles */}
-          <div className="absolute top-10 left-10 text-white/20 animate-pulse">
+          <div className="absolute top-10 left-10 text-[var(--color-text-primary)]/20 animate-pulse">
             <Sparkles size={40} />
           </div>
-          <div className="absolute bottom-10 right-10 text-white/20 animate-pulse" style={{ animationDelay: '1s' }}>
+          <div className="absolute bottom-10 right-10 text-[var(--color-text-primary)]/20 animate-pulse" style={{ animationDelay: '1s' }}>
             <Sparkles size={32} />
           </div>
 
-          <h2 className="text-4xl lg:text-6xl font-extrabold text-white mb-8 leading-tight">
+          <h2 className="text-4xl lg:text-6xl font-extrabold text-[var(--color-text-primary)] mb-8 leading-tight">
             Ready to Take Control <br className="hidden sm:block" /> 
             of Your Logistics?
           </h2>
           
-          <p className="text-white/80 text-lg lg:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-[var(--color-text-primary)]/80 text-lg lg:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
             Join 500+ operations teams who use ShipTrack to monitor their fleet 
             and deliver on their promises every single day.
           </p>
@@ -48,12 +48,12 @@ export default function CTA() {
               </Link>
             </motion.div>
             
-            <Link href="/login" className="text-white font-bold text-lg hover:text-white/80 transition-colors border-b-2 border-white/20 pb-1">
+            <Link href="/login" className="text-[var(--color-text-primary)] font-bold text-lg hover:text-[var(--color-text-primary)]/80 transition-colors border-b-2 border-[var(--color-border)] pb-1">
               Talk to an Expert
             </Link>
           </div>
 
-          <p className="mt-12 text-white/40 text-sm font-medium uppercase tracking-widest">
+          <p className="mt-12 text-[var(--color-text-primary)]/40 text-sm font-medium uppercase tracking-widest">
             No credit card required • 14-day free trial
           </p>
         </motion.div>

@@ -32,7 +32,7 @@ function StatusBadge({ status }: { status: string }) {
   };
   return (
     <span
-      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${map[status] ?? 'bg-white/10 text-white border-white/20'}`}
+      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${map[status] ?? 'bg-[var(--color-surface-hover)] text-[var(--color-text-primary)] border-[var(--color-border)]'}`}
     >
       <span className="w-1 h-1 rounded-full bg-current" />
       {status}
@@ -86,7 +86,7 @@ export default function DeliveryAgentDashboard({ user }: Props) {
           <p className="text-xs font-bold text-indigo-400 uppercase tracking-[0.2em] mb-1">
             Delivery Agent Portal
           </p>
-          <h1 className="text-2xl font-black text-white">
+          <h1 className="text-2xl font-black text-[var(--color-text-primary)]">
             {greeting()}, {user.name.split(' ')[0]} 👋
           </h1>
           <p className="text-[var(--color-text-muted)] text-sm mt-1">
@@ -95,7 +95,7 @@ export default function DeliveryAgentDashboard({ user }: Props) {
         </div>
         <button
           onClick={refetch}
-          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-[var(--color-border)] text-sm text-[var(--color-text-secondary)] hover:text-white hover:bg-white/10 transition-all"
+          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--color-surface-hover)] border border-[var(--color-border)] text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-hover)] transition-all"
         >
           <RefreshCw size={14} />
           Refresh
@@ -109,7 +109,7 @@ export default function DeliveryAgentDashboard({ user }: Props) {
             <Navigation size={12} className="text-indigo-400" />
             Active
           </div>
-          <p className="text-3xl font-black text-white">{loading ? '—' : activeOrders.length}</p>
+          <p className="text-3xl font-black text-[var(--color-text-primary)]">{loading ? '—' : activeOrders.length}</p>
           <p className="text-xs text-[var(--color-text-muted)]">in progress</p>
         </div>
         <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-5 flex flex-col gap-1">
@@ -133,7 +133,7 @@ export default function DeliveryAgentDashboard({ user }: Props) {
       {/* ── Orders List ──────────────────────────────────────────────────── */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+          <h2 className="text-sm font-bold text-[var(--color-text-primary)] uppercase tracking-wider flex items-center gap-2">
             <Package size={14} className="text-indigo-400" />
             My Assigned Orders
             {!loading && (
@@ -148,7 +148,7 @@ export default function DeliveryAgentDashboard({ user }: Props) {
             placeholder="Search by order ID or customer..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="text-sm bg-white/5 border border-[var(--color-border)] rounded-lg py-1.5 px-3 text-white placeholder:text-[var(--color-text-muted)] focus:outline-none focus:ring-1 focus:ring-indigo-500/50 w-64"
+            className="text-sm bg-[var(--color-surface-hover)] border border-[var(--color-border)] rounded-lg py-1.5 px-3 text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:ring-1 focus:ring-indigo-500/50 w-64"
           />
         </div>
 
@@ -183,7 +183,7 @@ export default function DeliveryAgentDashboard({ user }: Props) {
                         <StatusBadge status={order.status} />
                         <SLABadge order={order} />
                       </div>
-                      <p className="text-sm font-bold text-white">{order.customer.name}</p>
+                      <p className="text-sm font-bold text-[var(--color-text-primary)]">{order.customer.name}</p>
                       <div className="flex items-center gap-3 text-xs text-[var(--color-text-muted)]">
                         <span className="flex items-center gap-1">
                           <Phone size={10} />
