@@ -62,6 +62,8 @@ export interface ListOrdersParams {
   page?: number;
   limit?: number;
   search?: string;
+  delayReason?: string;
+  city?: string;
 }
 
 export interface ListOrdersResponse {

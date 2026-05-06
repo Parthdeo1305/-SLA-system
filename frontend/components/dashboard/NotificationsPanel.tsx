@@ -1,7 +1,9 @@
 import { Bell, Clock } from 'lucide-react';
+import Link from 'next/link';
 
 interface NotificationsPanelProps {
   alerts: {
+    id: string;
     orderId: string;
     status: string;
     timestamp: string;
@@ -27,11 +29,11 @@ export default function NotificationsPanel({ alerts }: NotificationsPanelProps) 
           </p>
         ) : (
           alerts.map((alert, i) => (
-            <div key={i} className="flex gap-3">
-              <div className="mt-1 w-2 h-2 rounded-full bg-indigo-500 flex-shrink-0" />
+            <Link key={i} href={`/orders/${alert.id || alert.orderId}`} className="flex gap-3 hover:bg-white/5 p-2 -mx-2 rounded-lg transition-colors cursor-pointer group">
+              <div className="mt-1 w-2 h-2 rounded-full bg-indigo-500 flex-shrink-0 group-hover:scale-125 transition-transform" />
               <div className="space-y-1">
                 <p className="text-xs text-white font-medium leading-relaxed">
-                  <span className="font-bold text-indigo-400">{alert.orderId}</span> moved to{' '}
+                  <span className="font-bold text-indigo-400 group-hover:underline">{alert.orderId}</span> moved to{' '}
                   <span className="text-indigo-300">{alert.status}</span>
                   {alert.agent && <span> by {alert.agent}</span>}
                 </p>
@@ -40,7 +42,7 @@ export default function NotificationsPanel({ alerts }: NotificationsPanelProps) 
                   {new Date(alert.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                 </div>
               </div>
-            </div>
+            </Link>
           ))
         )}
       </div>

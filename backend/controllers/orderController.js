@@ -68,7 +68,7 @@ const getStats = asyncHandler(async (req, res) => {
 // ─── GET /api/orders ──────────────────────────────────────────────────────────
 const listOrders = asyncHandler(async (req, res) => {
   const now = new Date();
-  const { status, delayed, page = 1, limit = 20, search } = req.query;
+  const { status, delayed, page = 1, limit = 20, search, delayReason, city } = req.query;
 
   // Build base filter query
   const filter = {};
@@ -82,6 +82,16 @@ const listOrders = asyncHandler(async (req, res) => {
       { 'customer.name': { $regex: search, $options: 'i' } },
       { orderId: { $regex: search, $options: 'i' } },
     ];
+  }
+  if (delayReason) {
+    if (delayReason === 'Unspecified') {
+      filter.delayReason = { $in: [null, '', 'None'] };
+    } else {
+      filter.delayReason = delayReason;
+    }
+  }
+  if (city) {
+    filter['pickupAddress.city'] = city;
   }
 
   // ── RBAC: delivery_agent sees only their assigned orders ────────────────
@@ -125,10 +135,12 @@ const listOrders = asyncHandler(async (req, res) => {
 
 // ─── GET /api/orders/:id ──────────────────────────────────────────────────────
 const getOrder = asyncHandler(async (req, res) => {
-  const order = await Order.findById(req.params.id).populate(
-    'createdBy',
-    'name email'
-  );
+  const { id } = req.params;
+  const isObjectId = id.match(/^[0-9a-fA-F]{24}$/);
+  
+  const order = await Order.findOne(
+    isObjectId ? { _id: id } : { orderId: id }
+  ).populate('createdBy', 'name email');
 
   if (!order) {
     return res.status(404).json({ success: false, error: 'Order not found.' });

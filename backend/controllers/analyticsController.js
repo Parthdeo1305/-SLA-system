@@ -29,6 +29,7 @@ const getDashboardAnalytics = asyncHandler(async (req, res) => {
       // 2. Delay Reason Breakdown
       Order.aggregate([
         { $match: { delayReason: { $exists: true, $ne: null, $ne: 'None' } } },
+        { $project: { delayReason: { $cond: [{ $eq: ['$delayReason', ''] }, 'Unspecified', '$delayReason'] } } },
         { $group: { _id: '$delayReason', count: { $sum: 1 } } },
         { $sort: { count: -1 } }
       ]),
@@ -42,9 +43,16 @@ const getDashboardAnalytics = asyncHandler(async (req, res) => {
             total: { $sum: 1 },
             delivered: { $sum: { $cond: [{ $eq: ['$status', 'Delivered'] }, 1, 0] } },
             delayed: { $sum: { $cond: [
-              { $and: [
-                { $lt: ['$promisedDeliveryTime', now] },
-                { $not: { $in: ['$status', ['Delivered', 'Failed']] } }
+              { $or: [
+                { $and: [
+                  { $lt: ['$promisedDeliveryTime', now] },
+                  { $not: { $in: ['$status', ['Delivered', 'Failed']] } }
+                ]},
+                { $and: [
+                  { $ne: ['$delayReason', null] },
+                  { $ne: ['$delayReason', 'None'] },
+                  { $ne: ['$delayReason', ''] }
+                ]}
               ]}, 1, 0
             ]} }
         }},
@@ -59,9 +67,16 @@ const getDashboardAnalytics = asyncHandler(async (req, res) => {
             _id: '$pickupAddress.city',
             shipments: { $sum: 1 },
             delays: { $sum: { $cond: [
-              { $and: [
-                { $lt: ['$promisedDeliveryTime', now] },
-                { $not: { $in: ['$status', ['Delivered', 'Failed']] } }
+              { $or: [
+                { $and: [
+                  { $lt: ['$promisedDeliveryTime', now] },
+                  { $not: { $in: ['$status', ['Delivered', 'Failed']] } }
+                ]},
+                { $and: [
+                  { $ne: ['$delayReason', null] },
+                  { $ne: ['$delayReason', 'None'] },
+                  { $ne: ['$delayReason', ''] }
+                ]}
               ]}, 1, 0
             ]} }
         }},
@@ -85,6 +100,7 @@ const getDashboardAnalytics = asyncHandler(async (req, res) => {
       .map(o => {
         const log = o.transitLogs[o.transitLogs.length - 1];
         return {
+          id: o._id.toString(),
           orderId: o.orderId,
           status: log.status,
           timestamp: log.updatedAt,

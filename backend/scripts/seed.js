@@ -43,156 +43,86 @@ const sampleUsers = [
   },
 ];
 
-// ─── Sample Fleet (Agents) ────────────────────────────────────────────────────
+// ─── Data Generators ─────────────────────────────────────────────────────────
 
-const sampleAgents = [
-  { agentId: 'AGT-001', name: 'Ramesh Singh', phone: '+91 9876543210', status: 'available' },
-  { agentId: 'AGT-002', name: 'Amit Kumar', phone: '+91 9876543211', status: 'busy' },
-  { agentId: 'AGT-003', name: 'Suresh Yadav', phone: '+91 9876543212', status: 'busy' },
-  { agentId: 'AGT-004', name: 'Raju Bhai', phone: '+91 9876543213', status: 'busy' },
-  { agentId: 'AGT-005', name: 'Dinesh Patil', phone: '+91 9876543214', status: 'available' },
+const firstNames = ['Amit', 'Raj', 'Suresh', 'Rahul', 'Vikram', 'Dinesh', 'Ramesh', 'Raju', 'Karan', 'Arjun', 'Manish', 'Sanjay', 'Prakash', 'Anil', 'Sunil', 'Vijay', 'Ashok', 'Ravi', 'Mukesh', 'Gaurav', 'Neha', 'Priya', 'Sunita', 'Ritu'];
+const lastNames = ['Kumar', 'Singh', 'Sharma', 'Patel', 'Yadav', 'Gupta', 'Jain', 'Verma', 'Tiwari', 'Desai', 'Reddy', 'Agarwal', 'Malhotra', 'Joshi', 'Chauhan'];
+
+const generateAgents = (count) => {
+  const agents = [];
+  for (let i = 0; i < count; i++) {
+    const fn = firstNames[Math.floor(Math.random() * firstNames.length)];
+    const ln = lastNames[Math.floor(Math.random() * lastNames.length)];
+    agents.push({
+      agentId: `AGT-${String(i + 1).padStart(3, '0')}`,
+      name: `${fn} ${ln}`,
+      phone: `+91 9${Math.floor(10000000 + Math.random() * 90000000)}`,
+      status: Math.random() > 0.5 ? 'available' : 'busy',
+      isActive: true
+    });
+  }
+  return agents;
+};
+
+const sampleAgents = generateAgents(25);
+
+const cities = [
+  { c: 'Mumbai', p: '400001' },
+  { c: 'Delhi', p: '110001' },
+  { c: 'Bengaluru', p: '560001' },
+  { c: 'Hyderabad', p: '500001' },
+  { c: 'Pune', p: '411001' },
+  { c: 'Chennai', p: '600001' },
+  { c: 'Kolkata', p: '700001' },
+  { c: 'Ahmedabad', p: '380001' }
 ];
 
-// ─── Sample Orders ────────────────────────────────────────────────────────────
+const statuses = ['Created', 'Picked', 'In Transit', 'In Transit', 'In Transit', 'Delivered', 'Delivered', 'Failed'];
+const delayReasons = ['Traffic', 'Vehicle Issue', 'Warehouse Delay', 'Weather', 'Address Issue'];
 
-const buildOrders = (userId, agents) => [
-  // ── Delivered (on time) ───────────────────────────────────────────────────
-  {
-    customer: { name: 'Rajesh Sharma', phone: '+91 9822012345', email: 'rajesh.sharma@example.in' },
-    pickupAddress: { addressLine: 'Warehouse A, MIDC', city: 'Pune', pincode: '411057' },
-    deliveryAddress: { addressLine: '101, Shivam Apts, Kothrud', city: 'Pune', pincode: '411038' },
-    status: 'Delivered',
-    promisedDeliveryTime: hoursAgo(2),
-    notes: 'Standard delivery. Signed by security guard.',
-    createdBy: userId,
-    createdAt: daysAgo(3),
-    deliveryAgent: { agent: agents[0]._id, name: agents[0].name, phone: agents[0].phone },
-  },
-  {
-    customer: { name: 'Priya Patel', phone: '+91 9933098765', email: 'priya.patel@example.in' },
-    pickupAddress: { addressLine: 'Warehouse B, Andheri East', city: 'Mumbai', pincode: '400069' },
-    deliveryAddress: { addressLine: 'Sea View Towers, Worli', city: 'Mumbai', pincode: '400018' },
-    status: 'Delivered',
-    promisedDeliveryTime: hoursAgo(5),
-    notes: 'Priority shipment — delivered ahead of schedule.',
-    createdBy: userId,
-    createdAt: daysAgo(5),
-    deliveryAgent: { agent: agents[1]._id, name: agents[1].name, phone: agents[1].phone },
-  },
-  {
-    customer: { name: 'Anil Gupta', phone: '+91 9811223344', email: 'agupta@retailindia.com' },
-    pickupAddress: { addressLine: 'Delhi Hub, Okhla Phase 1', city: 'New Delhi', pincode: '110020' },
-    deliveryAddress: { addressLine: 'Connaught Place Block C', city: 'New Delhi', pincode: '110001' },
-    status: 'Delivered',
-    promisedDeliveryTime: daysAgo(1),
-    notes: 'Fragile electronics. Delivered intact.',
-    createdBy: userId,
-    createdAt: daysAgo(4),
-    deliveryAgent: { agent: agents[2]._id, name: agents[2].name, phone: agents[2].phone },
-  },
-
-  // ── In Transit — on time ──────────────────────────────────────────────────
-  {
-    customer: { name: 'Sunita Verma', phone: '+91 9988776655', email: 's.verma@pharmaco.in' },
-    pickupAddress: { addressLine: 'Cold Storage Unit, Electronic City', city: 'Bengaluru', pincode: '560100' },
-    deliveryAddress: { addressLine: 'Apollo Clinic, Koramangala', city: 'Bengaluru', pincode: '560034' },
-    status: 'In Transit',
-    promisedDeliveryTime: hoursFromNow(4),
-    notes: 'Temperature-sensitive cargo. Refrigerated truck required.',
-    createdBy: userId,
-    createdAt: hoursAgo(6),
-    deliveryAgent: { agent: agents[3]._id, name: agents[3].name, phone: agents[3].phone },
-  },
-  {
-    customer: { name: 'Vikash Jain', phone: '+91 9123456780', email: 'vikash.jain@example.in' },
-    pickupAddress: { addressLine: 'Textile Hub, Surat', city: 'Surat', pincode: '395002' },
-    deliveryAddress: { addressLine: 'Wholesale Market, Ring Road', city: 'Surat', pincode: '395003' },
-    status: 'In Transit',
-    promisedDeliveryTime: hoursFromNow(8),
-    createdBy: userId,
-    createdAt: hoursAgo(3),
-    deliveryAgent: { agent: agents[1]._id, name: agents[1].name, phone: agents[1].phone },
-  },
-
-  // ── In Transit — DUE SOON (within 60 min = warning) ──────────────────────
-  {
-    customer: { name: 'Manoj Tiwari', phone: '+91 9876123450', email: 'manoj.constructions@example.in' },
-    pickupAddress: { addressLine: 'Cement Godown, Navi Mumbai', city: 'Navi Mumbai', pincode: '400705' },
-    deliveryAddress: { addressLine: 'Site C, Vashi Sector 17', city: 'Navi Mumbai', pincode: '400703' },
-    status: 'In Transit',
-    promisedDeliveryTime: hoursFromNow(0.5),
-    notes: 'Construction materials — site access only 9am–5pm.',
-    createdBy: userId,
-    createdAt: hoursAgo(12),
-    deliveryAgent: { agent: agents[2]._id, name: agents[2].name, phone: agents[2].phone },
-  },
-
-  // ── In Transit — DELAYED ──────────────────────────────────────────────────
-  {
-    customer: { name: 'Ritu Desai', phone: '+91 9000011111', email: 'ritu.boutique@example.in' },
-    pickupAddress: { addressLine: 'Garment Factory, Tiruppur', city: 'Tiruppur', pincode: '641602' },
-    deliveryAddress: { addressLine: 'Retail Mall, Anna Nagar', city: 'Chennai', pincode: '600040' },
-    status: 'In Transit',
-    promisedDeliveryTime: hoursAgo(3),
-    notes: 'Delayed due to heavy traffic on NH48.',
-    createdBy: userId,
-    createdAt: daysAgo(2),
-    deliveryAgent: { agent: agents[3]._id, name: agents[3].name, phone: agents[3].phone },
-    delayReason: 'Traffic',
-    delayNote: 'Caught in a massive jam near the toll plaza.',
-  },
-  {
-    customer: { name: 'Karan Singh', phone: '+91 9888822222', email: 'karan.singh@auto.in' },
-    pickupAddress: { addressLine: 'Auto Parts Mfg, Manesar', city: 'Gurugram', pincode: '122051' },
-    deliveryAddress: { addressLine: 'Service Center, Sector 14', city: 'Gurugram', pincode: '122001' },
-    status: 'In Transit',
-    promisedDeliveryTime: hoursAgo(6),
-    notes: 'Driver reported vehicle breakdown. Replacement arranged.',
-    createdBy: userId,
-    createdAt: daysAgo(3),
-    deliveryAgent: { agent: agents[1]._id, name: agents[1].name, phone: agents[1].phone },
-    delayReason: 'Vehicle Issue',
-    delayNote: 'Flat tire on the delivery tempo.',
-  },
-
-  // ── Picked — DELAYED ─────────────────────────────────────────────────────
-  {
-    customer: { name: 'Neha Agarwal', phone: '+91 9777733333', email: 'neha.a@example.in' },
-    pickupAddress: { addressLine: 'Warehouse C, Bhiwandi', city: 'Thane', pincode: '421302' },
-    deliveryAddress: { addressLine: 'Godrej Woods, Vikhroli', city: 'Mumbai', pincode: '400079' },
-    status: 'Picked',
-    promisedDeliveryTime: hoursAgo(4),
-    notes: 'High priority order. Escalate immediately.',
-    createdBy: userId,
-    createdAt: daysAgo(2),
-    delayReason: 'Warehouse Delay',
-    delayNote: 'Stock was hard to locate in the aisles.',
-  },
-
-  // ── Created — on time ────────────────────────────────────────────────────
-  {
-    customer: { name: 'Rahul Joshi', phone: '+91 9666644444', email: 'rahul.j@example.in' },
-    pickupAddress: { addressLine: 'Main Depot, Whitefield', city: 'Bengaluru', pincode: '560066' },
-    deliveryAddress: { addressLine: 'IT Park, Bellandur', city: 'Bengaluru', pincode: '560103' },
-    status: 'Created',
-    promisedDeliveryTime: hoursFromNow(24),
-    createdBy: userId,
-    createdAt: hoursAgo(0.5),
-  },
-
-  // ── Failed ───────────────────────────────────────────────────────────────
-  {
-    customer: { name: 'Arjun Reddy', phone: '+91 9555555555', email: 'arjun.r@example.in' },
-    pickupAddress: { addressLine: 'Hub 1, HITEC City', city: 'Hyderabad', pincode: '500081' },
-    deliveryAddress: { addressLine: 'Gachibowli Phase 2', city: 'Hyderabad', pincode: '500032' },
-    status: 'Failed',
-    promisedDeliveryTime: daysAgo(1),
-    notes: 'Recipient refused delivery. Return to sender initiated.',
-    createdBy: userId,
-    createdAt: daysAgo(3),
-    deliveryAgent: { agent: agents[4]._id, name: agents[4].name, phone: agents[4].phone },
-  },
-];
+const buildOrders = (userId, agents) => {
+  const orders = [];
+  for (let i = 0; i < 70; i++) {
+    const cityObj = cities[Math.floor(Math.random() * cities.length)];
+    const isDelayed = Math.random() < 0.25; // 25% delayed
+    const status = statuses[Math.floor(Math.random() * statuses.length)];
+    
+    let promisedTime;
+    if (isDelayed && status !== 'Delivered') {
+      promisedTime = hoursAgo(Math.floor(Math.random() * 24) + 1);
+    } else {
+      promisedTime = hoursFromNow(Math.floor(Math.random() * 48) + 1);
+    }
+    
+    let deliveryAgent;
+    if (status !== 'Created' && agents.length > 0) {
+      const agent = agents[Math.floor(Math.random() * agents.length)];
+      deliveryAgent = { agent: agent._id, name: agent.name, phone: agent.phone };
+    }
+    
+    const fn = firstNames[Math.floor(Math.random() * firstNames.length)];
+    const ln = lastNames[Math.floor(Math.random() * lastNames.length)];
+    const reason = delayReasons[Math.floor(Math.random() * delayReasons.length)];
+    
+    orders.push({
+      customer: { 
+        name: `${fn} ${ln}`, 
+        phone: `+91 9${Math.floor(10000000 + Math.random() * 90000000)}`, 
+        email: `${fn.toLowerCase()}${i}@example.in` 
+      },
+      pickupAddress: { addressLine: `Fulfillment Center ${Math.floor(Math.random() * 5) + 1}`, city: cityObj.c, pincode: cityObj.p },
+      deliveryAddress: { addressLine: `Sector ${Math.floor(Math.random() * 20) + 1}, Block ${String.fromCharCode(65 + Math.floor(Math.random() * 5))}`, city: cityObj.c, pincode: cityObj.p },
+      status,
+      promisedDeliveryTime: promisedTime,
+      createdBy: userId,
+      createdAt: daysAgo(Math.floor(Math.random() * 5) + 1),
+      deliveryAgent,
+      delayReason: isDelayed ? reason : undefined,
+      delayNote: isDelayed ? `Reported delay due to ${reason.toLowerCase()}` : undefined,
+    });
+  }
+  return orders;
+};
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
